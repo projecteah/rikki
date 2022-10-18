@@ -29,8 +29,19 @@
       </el-aside>
       <el-main>
         <el-input v-model="current.title" placeholder="Title" size="large"></el-input>
-        <div style="display:flex;gap:10px;margin-top:10px;height:calc(100vh - 120px)">
-          <el-input v-model="current.content" type="textarea" placeholder="Write markdown here..." style="flex:1;height:100%"></el-input>
+        <div style="display:flex;gap:4px;margin:8px 0;flex-wrap:wrap">
+          <el-button size="small" @click="format('**','**')"><b>B</b></el-button>
+          <el-button size="small" @click="format('*','*')"><i>I</i></el-button>
+          <el-button size="small" @click="format('# ')">H1</el-button>
+          <el-button size="small" @click="format('## ')">H2</el-button>
+          <el-button size="small" @click="format('### ')">H3</el-button>
+          <el-button size="small" @click="format('- ')">List</el-button>
+          <el-button size="small" @click="format('[](url)')">Link</el-button>
+          <el-button size="small" @click="format('`','`')">Code</el-button>
+          <el-button size="small" @click="format('> ')">Quote</el-button>
+        </div>
+        <div style="display:flex;gap:10px;height:calc(100vh - 160px)">
+          <el-input ref="editor" v-model="current.content" type="textarea" placeholder="Write markdown here..." style="flex:1;height:100%"></el-input>
           <div v-html="rendered" style="flex:1;border:1px solid #ddd;padding:10px;overflow:auto"></div>
         </div>
       </el-main>
@@ -47,6 +58,7 @@
       setup() {
         const notes = ref(JSON.parse(localStorage.getItem('notes') || '[{"title":"","content":""}]'));
         const activeIndex = ref('0');
+        const editor = ref(null);
         const current = computed(() => notes.value[parseInt(activeIndex.value)] || { title: '', content: '' });
         const rendered = computed(() => marked.parse(current.value.content || ''));
 
@@ -58,7 +70,21 @@
         };
         const selectNote = (i) => { activeIndex.value = i; };
 
-        return { notes, activeIndex, current, rendered, newNote, selectNote };
+        const format = (before, after) => {
+          const el = editor.value.textarea;
+          const start = el.selectionStart;
+          const end = el.selectionEnd;
+          const text = current.value.content || '';
+          const selected = text.substring(start, end);
+          const replacement = before + (selected || 'text') + (after || '');
+          current.value.content = text.substring(0, start) + replacement + text.substring(end);
+          setTimeout(() => {
+            el.focus();
+            el.setSelectionRange(start + before.length, start + before.length + (selected ? selected.length : 4));
+          });
+        };
+
+        return { notes, activeIndex, current, rendered, editor, newNote, selectNote, format };
       },
     }).use(ElementPlus).mount('#app');
   </script>
