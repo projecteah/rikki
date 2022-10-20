@@ -20,7 +20,8 @@
   <div id="app">
     <el-container>
       <el-aside width="200px">
-        <el-button type="primary" size="small" @click="newNote" style="margin:10px">+ New</el-button>
+        <el-button type="primary" size="small" @click="newNote" style="margin:10px 0 10px 10px">+ New</el-button>
+        <el-button type="danger" size="small" @click="deleteNote" :disabled="notes.length<=1">Delete</el-button>
         <el-menu :default-active="activeIndex" @select="selectNote">
           <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)">
             {{ note.title || 'Untitled' }}
@@ -70,6 +71,13 @@
         };
         const selectNote = (i) => { activeIndex.value = i; };
 
+        const deleteNote = () => {
+          if (notes.value.length <= 1) return;
+          const idx = parseInt(activeIndex.value);
+          notes.value.splice(idx, 1);
+          activeIndex.value = String(Math.max(0, idx - 1));
+        };
+
         const format = (before, after) => {
           const el = editor.value.textarea;
           const start = el.selectionStart;
@@ -84,7 +92,7 @@
           });
         };
 
-        return { notes, activeIndex, current, rendered, editor, newNote, selectNote, format };
+        return { notes, activeIndex, current, rendered, editor, newNote, selectNote, deleteNote, format };
       },
     }).use(ElementPlus).mount('#app');
   </script>
