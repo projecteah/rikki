@@ -1,0 +1,26 @@
+:root {
+  --el-color-primary: #00bcd4;
+  --el-color-primary-light-3: #4dd0e1;
+  --el-color-primary-light-5: #80deea;
+  --el-color-primary-light-7: #b2ebf2;
+  --el-color-primary-light-8: #e0f7fa;
+  --el-color-primary-light-9: #f0fcfd;
+  --el-color-primary-dark-2: #0097a7;
+}
+
+html, body { height: 100%; margin: 0; }
+
+.context-menu {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 0;
+  z-index: 9999;
+  min-width: 120px;
+}
+.context-menu-item {
+  padding: 6px 16px;
+  cursor: pointer;
+}
+.context-menu-item:hover { background: #f5f5f5; }

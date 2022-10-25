@@ -10,7 +10,7 @@ function createWindow() {
     },
   });
 
-  win.loadFile('notes.html');
+  win.loadFile('index.html');
 }
 
 app.whenReady().then(createWindow);
