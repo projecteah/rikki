@@ -1,13 +1,20 @@
-import { notes, activeIndex, current, newNote, selectNote, deleteNote } from './store.js';
-import { editor, rendered, format } from './editor.js';
-import { menuVisible, menuX, menuY, menuIndex, showMenu } from './context-menu.js';
+function onContextCommand(cmd, i) {
+  if (cmd === 'delete') deleteNote(i);
+}
 
-const app = createApp({
+var app = Vue.createApp({
   setup() {
     return {
-      notes, activeIndex, current, rendered,
-      editor, newNote, selectNote, deleteNote, format,
-      menuVisible, menuX, menuY, menuIndex, showMenu,
+      notes: notes,
+      activeIndex: activeIndex,
+      current: current,
+      rendered: rendered,
+      editor: editor,
+      newNote: newNote,
+      selectNote: selectNote,
+      deleteNote: deleteNote,
+      format: format,
+      onContextCommand: onContextCommand,
     };
   },
 });

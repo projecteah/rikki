@@ -1,20 +1,17 @@
-import { ref, computed } from Vue';
-import { current } from './store.js';
+var editor = Vue.ref(null);
 
-export const editor = ref(null);
-
-export const format = (before, after) => {
-  const el = editor.value.textarea;
-  const start = el.selectionStart;
-  const end = el.selectionEnd;
-  const text = current.value.content || '';
-  const selected = text.substring(start, end);
-  const replacement = before + (selected || 'text') + (after || '');
+function format(before, after) {
+  var el = editor.value.textarea;
+  var start = el.selectionStart;
+  var end = el.selectionEnd;
+  var text = current.value.content || '';
+  var selected = text.substring(start, end);
+  var replacement = before + (selected || 'text') + (after || '');
   current.value.content = text.substring(0, start) + replacement + text.substring(end);
-  setTimeout(() => {
+  setTimeout(function() {
     el.focus();
     el.setSelectionRange(start + before.length, start + before.length + (selected ? selected.length : 4));
   });
-};
+}
 
-export const rendered = computed(() => marked.parse(current.value.content || ''));
+var rendered = Vue.computed(function() { return marked.parse(current.value.content || ''); });

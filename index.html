@@ -9,16 +9,21 @@
 <body>
   <div id="app">
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="220px">
         <el-button type="primary" size="small" @click="newNote" style="margin:10px 0 10px 10px">+ New</el-button>
         <el-menu :default-active="activeIndex" @select="selectNote">
-          <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)" @contextmenu.prevent="showMenu($event, i)">
-            {{ note.title || 'Untitled' }}
+          <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)">
+            <span class="note-title">{{ note.title || 'Untitled' }}</span>
+            <el-dropdown trigger="click" @command="onContextCommand($event, i)" class="note-more">
+              <span style="font-size:16px;line-height:1">⋮</span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="delete">Delete</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </el-menu-item>
         </el-menu>
-        <div v-show="menuVisible" class="context-menu" :style="{left:menuX+'px',top:menuY+'px'}">
-          <div class="context-menu-item" @click="deleteNote(menuIndex);menuVisible=false">Delete</div>
-        </div>
       </el-aside>
       <el-main>
         <el-input v-model="current.title" placeholder="Title" size="large"></el-input>
@@ -44,6 +49,8 @@
   <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.prod.js"></script>
   <script src="https://unpkg.com/element-plus@2.2.18/dist/index.full.min.js"></script>
   <script src="https://unpkg.com/marked@4.1.1/marked.min.js"></script>
-  <script type="module" src="app.js"></script>
+  <script src="store.js"></script>
+  <script src="editor.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
