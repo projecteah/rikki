@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <title>Notes</title>
   <link rel="stylesheet" href="https://unpkg.com/element-plus@2.2.18/dist/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-plus@2.2.18/theme-chalk/dark/css-vars.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
     <el-container>
-      <el-aside width="220px">
-        <el-button type="primary" size="small" @click="newNote" style="margin:10px 0 10px 10px">+ New</el-button>
+      <el-aside width="220px" class="aside">
+        <div class="aside-header">
+          <el-button type="primary" size="small" @click="newNote">+ New</el-button>
+          <el-switch v-model="isDark" @change="toggleDark" class="theme-switch" />
+        </div>
         <el-menu :default-active="activeIndex" @select="selectNote">
           <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)">
             <span class="note-title">{{ note.title || 'Untitled' }}</span>
@@ -40,7 +44,7 @@
         </div>
         <div style="display:flex;gap:10px;height:calc(100vh - 160px)">
           <el-input ref="editor" v-model="current.content" type="textarea" placeholder="Write markdown here..." style="flex:1;height:100%"></el-input>
-          <div v-html="rendered" style="flex:1;border:1px solid #ddd;padding:10px;overflow:auto"></div>
+          <div v-html="rendered" style="flex:1;border:1px solid var(--el-border-color);padding:10px;overflow:auto"></div>
         </div>
       </el-main>
     </el-container>

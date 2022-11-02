@@ -10,7 +10,10 @@
 
 html, body { height: 100%; margin: 0; }
 
-.el-menu-item { position: relative; }
+.aside { display: flex; flex-direction: column; }
+.aside-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 10px 0; }
+.theme-switch { margin-right: 8px; }
 .note-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .note-more { margin-left: auto; cursor: pointer; padding: 4px; }
 .note-more:hover { background: rgba(0,0,0,0.06); border-radius: 4px; }
+.dark .note-more:hover { background: rgba(255,255,255,0.1); }
