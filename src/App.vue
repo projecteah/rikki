@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import {
-  notes, activeIndex, current, rendered, editor,
-  newNote, selectNote, format,
-  contextIndex, isDark, toggleDark, onContextCommand,
-} from './app'
+import { ref } from 'vue'
+import { notes, activeIndex, current, newNote, selectNote, deleteNote } from './store'
+import { editor, rendered, format } from './editor'
+import { isDark, toggleDark } from './theme'
+
+const contextIndex = ref<number>(0)
+
+function onContextCommand(cmd: string, i: number) {
+  if (cmd === 'delete') deleteNote(i)
+}
 </script>
 
 <template>

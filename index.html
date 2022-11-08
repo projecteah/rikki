@@ -1,60 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Notes</title>
-  <link rel="stylesheet" href="https://unpkg.com/element-plus@2.2.18/dist/index.css">
-  <link rel="stylesheet" href="https://unpkg.com/element-plus@2.2.18/theme-chalk/dark/css-vars.css">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rikki</title>
 </head>
 <body>
-  <div id="app">
-    <el-container>
-      <el-aside width="220px" class="aside">
-        <div class="aside-header">
-          <el-button type="primary" size="small" @click="newNote">+ New</el-button>
-          <el-switch v-model="isDark" @change="toggleDark" class="theme-switch" />
-        </div>
-        <el-menu :default-active="activeIndex" @select="selectNote">
-          <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)">
-            <span class="note-title">{{ note.title || 'Untitled' }}</span>
-            <el-dropdown trigger="click" @command="onContextCommand($event, i)" class="note-more">
-              <span style="font-size:16px;line-height:1">⋮</span>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item command="delete">Delete</el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </el-menu-item>
-        </el-menu>
-      </el-aside>
-      <el-main>
-        <el-input v-model="current.title" placeholder="Title" size="large"></el-input>
-        <div style="display:flex;gap:4px;margin:8px 0;flex-wrap:wrap">
-          <el-button size="small" @click="format('**','**')"><b>B</b></el-button>
-          <el-button size="small" @click="format('*','*')"><i>I</i></el-button>
-          <el-button size="small" @click="format('# ')">H1</el-button>
-          <el-button size="small" @click="format('## ')">H2</el-button>
-          <el-button size="small" @click="format('### ')">H3</el-button>
-          <el-button size="small" @click="format('- ')">List</el-button>
-          <el-button size="small" @click="format('[](url)')">Link</el-button>
-          <el-button size="small" @click="format('`','`')">Code</el-button>
-          <el-button size="small" @click="format('> ')">Quote</el-button>
-        </div>
-        <div style="display:flex;gap:10px;height:calc(100vh - 160px)">
-          <el-input ref="editor" v-model="current.content" type="textarea" placeholder="Write markdown here..." style="flex:1;height:100%"></el-input>
-          <div v-html="rendered" style="flex:1;border:1px solid var(--el-border-color);padding:10px;overflow:auto"></div>
-        </div>
-      </el-main>
-    </el-container>
-  </div>
-
-  <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.prod.js"></script>
-  <script src="https://unpkg.com/element-plus@2.2.18/dist/index.full.min.js"></script>
-  <script src="https://unpkg.com/marked@4.1.1/marked.min.js"></script>
-  <script src="store.js"></script>
-  <script src="editor.js"></script>
-  <script src="app.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
