@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @rikki/web dev",
+    "dev:api": "pnpm --filter @rikki/api dev",
     "build": "pnpm --filter @rikki/web build"
   },
   "devDependencies": {
