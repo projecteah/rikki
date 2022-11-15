@@ -6,28 +6,13 @@ defineProps<{
 </script>
 
 <template>
-  <button class="rikki-btn" :class="[`rikki-btn--${type || 'default'}`, `rikki-btn--${size || 'medium'}`]">
+  <button
+    class="btn-base"
+    :class="[
+      type === 'primary' ? 'bg-[#00bcd4] text-white' : 'bg-[#f0f0f0] text-[#333]',
+      size === 'small' ? 'px-2 py-1 text-xs' : size === 'large' ? 'px-6 py-3 text-base' : 'px-4 py-2 text-sm'
+    ]"
+  >
     <slot />
   </button>
 </template>
-
-<style scoped>
-.rikki-btn {
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.2s;
-}
-.rikki-btn--default {
-  background: #f0f0f0;
-  color: #333;
-}
-.rikki-btn--primary {
-  background: #00bcd4;
-  color: #fff;
-}
-.rikki-btn--small { padding: 4px 8px; font-size: 12px; }
-.rikki-btn--medium { padding: 8px 16px; font-size: 14px; }
-.rikki-btn--large { padding: 12px 24px; font-size: 16px; }
-</style>
