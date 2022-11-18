@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { notes, activeIndex, current, newNote, selectNote, deleteNote } from './store'
-import { editor, rendered, format } from './editor'
-import { isDark, toggleDark } from './theme'
+const { notes, activeIndex, current, newNote, selectNote, deleteNote } = useNotes()
+const { editor, format, rendered } = useEditor(current)
+const { isDark, toggleDark } = useTheme()
 
-const contextIndex = ref<number>(0)
+const contextIndex = ref(0)
 
 function onContextCommand(cmd: string, i: number) {
   if (cmd === 'delete') deleteNote(i)
@@ -19,11 +18,7 @@ function onContextCommand(cmd: string, i: number) {
         <el-switch v-model="isDark" @change="toggleDark" />
       </div>
       <el-menu :default-active="activeIndex" @select="selectNote">
-        <el-menu-item
-          v-for="(note, i) in notes"
-          :key="i"
-          :index="String(i)"
-        >
+        <el-menu-item v-for="(note, i) in notes" :key="i" :index="String(i)">
           <span class="truncate flex-1">{{ note.title || 'Untitled' }}</span>
           <el-dropdown trigger="click" @command="onContextCommand($event, i)" class="ml-auto cursor-pointer p-1 hover:bg-black/5 rounded">
             <span class="text-base leading-none">⋮</span>
