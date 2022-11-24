@@ -1,10 +1,16 @@
 <script setup lang="ts">
 const { memos, addMemo, deleteMemo, allTags } = useMemos()
-const { format, render } = useEditor()
+const { format } = useEditor()
 const { isDark, toggleDark } = useTheme()
 
 const input = ref('')
 const textarea = ref<HTMLTextAreaElement | null>(null)
+const activeTag = ref<string | null>(null)
+
+const filteredMemos = computed(() => {
+  if (!activeTag.value) return memos.value
+  return memos.value.filter(m => m.tags.includes(activeTag.value!))
+})
 
 const submit = () => {
   const text = input.value.trim()
@@ -50,9 +56,21 @@ const onFormat = (before: string, after?: string) => {
       </div>
     </div>
 
+    <div v-if="allTags.length" class="px-4 py-2 border-b border-[var(--el-border-color)] flex gap-2 flex-wrap">
+      <el-tag
+        v-for="tag in allTags"
+        :key="tag"
+        :type="activeTag === tag ? 'primary' : 'info'"
+        class="cursor-pointer"
+        @click="activeTag = activeTag === tag ? null : tag"
+      >
+        #{{ tag }}
+      </el-tag>
+    </div>
+
     <div class="flex-1 overflow-auto px-4 py-3">
-      <div v-if="memos.length" class="flex flex-col gap-3">
-        <div v-for="memo in memos" :key="memo.id" class="p-3 rounded-lg bg-[var(--el-fill-color-light)]">
+      <div v-if="filteredMemos.length" class="flex flex-col gap-3">
+        <div v-for="memo in filteredMemos" :key="memo.id" class="p-3 rounded-lg bg-[var(--el-fill-color-light)]">
           <div class="flex items-start justify-between gap-2">
             <div class="flex-1 text-sm whitespace-pre-wrap">{{ memo.content }}</div>
             <el-button size="small" type="danger" link @click="deleteMemo(memo.id)">delete</el-button>
