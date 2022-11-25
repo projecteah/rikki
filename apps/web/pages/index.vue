@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { memos, addMemo, deleteMemo, allTags } = useMemos()
-const { format } = useEditor()
+const { format, render } = useEditor()
 const { isDark, toggleDark } = useTheme()
 
 const input = ref('')
@@ -21,6 +21,16 @@ const submit = () => {
 
 const onFormat = (before: string, after?: string) => {
   if (textarea.value) format(textarea.value, before, after)
+}
+
+const formatTime = (ts: number) => {
+  const d = new Date(ts)
+  const now = new Date()
+  const diff = now.getTime() - ts
+  if (diff < 60000) return 'just now'
+  if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`
+  if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`
+  return d.toLocaleDateString()
 }
 </script>
 
@@ -70,13 +80,13 @@ const onFormat = (before: string, after?: string) => {
 
     <div class="flex-1 overflow-auto px-4 py-3">
       <div v-if="filteredMemos.length" class="flex flex-col gap-3">
-        <div v-for="memo in filteredMemos" :key="memo.id" class="p-3 rounded-lg bg-[var(--el-fill-color-light)]">
+        <div v-for="memo in filteredMemos" :key="memo.id" class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
           <div class="flex items-start justify-between gap-2">
-            <div class="flex-1 text-sm whitespace-pre-wrap">{{ memo.content }}</div>
+            <div class="flex-1 text-sm markdown-body" v-html="render(memo.content)"></div>
             <el-button size="small" type="danger" link @click="deleteMemo(memo.id)">delete</el-button>
           </div>
           <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
-            <span>{{ new Date(memo.createdAt).toLocaleString() }}</span>
+            <span>{{ formatTime(memo.createdAt) }}</span>
             <span v-for="tag in memo.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
           </div>
         </div>
