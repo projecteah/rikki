@@ -1,12 +1,25 @@
 import Koa from 'koa'
 import Router from '@koa/router'
 import { getDb } from './db'
+import { auth } from './auth'
 
 const app = new Koa()
 const router = new Router()
 
+app.use(auth())
+
 router.get('/api/health', (ctx) => {
   ctx.body = { status: 'ok', timestamp: new Date().toISOString() }
+})
+
+router.post('/api/login', (ctx) => {
+  const { password } = ctx.request.body as any
+  if (password === process.env.RIKKI_PASSWORD) {
+    ctx.body = { token: password }
+  } else {
+    ctx.status = 401
+    ctx.body = { error: 'wrong password' }
+  }
 })
 
 router.get('/api/memos', async (ctx) => {
