@@ -2,10 +2,14 @@
 const { memos, addMemo, deleteMemo, allTags } = useMemos()
 const { format, render } = useEditor()
 const { isDark, toggleDark } = useTheme()
+const { config, login, configured, fetchMemos, pushMemo, removeMemo } = useSync()
 
 const input = ref('')
 const textarea = ref<HTMLTextAreaElement | null>(null)
 const activeTag = ref<string | null>(null)
+const showSettings = ref(false)
+const settingsForm = ref({ apiBase: '', password: '' })
+const syncing = ref(false)
 
 const filteredMemos = computed(() => {
   if (!activeTag.value) return memos.value
@@ -16,7 +20,16 @@ const submit = () => {
   const text = input.value.trim()
   if (!text) return
   addMemo(text)
+  if (configured.value) {
+    const tags = extractTags(text)
+    pushMemo(text, tags).catch(() => {})
+  }
   input.value = ''
+}
+
+const extractTags = (content: string): string => {
+  const matches = content.match(/#(\S+)/g)
+  return matches ? matches.map(t => t.slice(1)) : []
 }
 
 const onFormat = (before: string, after?: string) => {
@@ -24,13 +37,42 @@ const onFormat = (before: string, after?: string) => {
 }
 
 const formatTime = (ts: number) => {
-  const d = new Date(ts)
-  const now = new Date()
-  const diff = now.getTime() - ts
+  const diff = Date.now() - ts
   if (diff < 60000) return 'just now'
   if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`
   if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`
-  return d.toLocaleDateString()
+  return new Date(ts).toLocaleDateString()
+}
+
+const openSettings = () => {
+  settingsForm.value.apiBase = config.value.apiBase || ''
+  settingsForm.value.password = ''
+  showSettings.value = true
+}
+
+const saveSettings = async () => {
+  try {
+    await login(settingsForm.value.apiBase, settingsForm.value.password)
+    showSettings.value = false
+  } catch {
+    alert('login failed')
+  }
+}
+
+const syncNow = async () => {
+  syncing.value = true
+  try {
+    const remoteMemos = await fetchMemos()
+    // merge remote memos into local
+    remoteMemos.forEach((m: any) => {
+      if (!memos.value.find(local => local.id === m.id)) {
+        memos.value.unshift(m)
+      }
+    })
+  } catch {
+    alert('sync failed')
+  }
+  syncing.value = false
 }
 </script>
 
@@ -38,7 +80,11 @@ const formatTime = (ts: number) => {
   <div class="flex flex-col h-screen">
     <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--el-border-color)]">
       <h1 class="text-lg font-semibold">Rikki</h1>
-      <el-switch v-model="isDark" @change="toggleDark" />
+      <div class="flex items-center gap-2">
+        <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">sync</el-button>
+        <el-button size="small" @click="openSettings">settings</el-button>
+        <el-switch v-model="isDark" @change="toggleDark" />
+      </div>
     </header>
 
     <div class="px-4 py-3 border-b border-[var(--el-border-color)]">
@@ -95,5 +141,20 @@ const formatTime = (ts: number) => {
         no memos yet
       </div>
     </div>
+
+    <el-dialog v-model="showSettings" title="sync settings" width="400px">
+      <el-form label-position="top">
+        <el-form-item label="api base url">
+          <el-input v-model="settingsForm.apiBase" placeholder="https://your-api.vercel.app" />
+        </el-form-item>
+        <el-form-item label="password">
+          <el-input v-model="settingsForm.password" type="password" placeholder="your password" />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="showSettings = false">cancel</el-button>
+        <el-button type="primary" @click="saveSettings">save</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
