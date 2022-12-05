@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const { memos, addMemo, deleteMemo, allTags } = useMemos()
-const { format, render } = useEditor()
+const { render } = useEditor()
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchMemos, pushMemo, removeMemo } = useSync()
 
 const input = ref('')
-const textarea = ref<HTMLTextAreaElement | null>(null)
+
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const settingsForm = ref({ apiBase: '', password: '' })
@@ -30,10 +30,6 @@ const submit = () => {
 const extractTags = (content: string): string => {
   const matches = content.match(/#(\S+)/g)
   return matches ? matches.map(t => t.slice(1)) : []
-}
-
-const onFormat = (before: string, after?: string) => {
-  if (textarea.value) format(textarea.value, before, after)
 }
 
 const formatTime = (ts: number) => {
@@ -89,7 +85,6 @@ const syncNow = async () => {
 
     <div class="px-4 py-3 border-b border-[var(--el-border-color)]">
       <textarea
-        ref="textarea"
         v-model="input"
         placeholder="what's on your mind..."
         class="w-full resize-none border-none outline-none text-sm bg-transparent"
@@ -97,17 +92,7 @@ const syncNow = async () => {
         @keydown.meta.enter="submit"
         @keydown.ctrl.enter="submit"
       />
-      <div class="flex items-center justify-between mt-2">
-        <div class="flex gap-1 flex-wrap">
-          <el-button size="small" @click="onFormat('**', '**')"><b>B</b></el-button>
-          <el-button size="small" @click="onFormat('*', '*')"><i>I</i></el-button>
-          <el-button size="small" @click="onFormat('# ')">H1</el-button>
-          <el-button size="small" @click="onFormat('## ')">H2</el-button>
-          <el-button size="small" @click="onFormat('- ')">List</el-button>
-          <el-button size="small" @click="onFormat('[](url)')">Link</el-button>
-          <el-button size="small" @click="onFormat('`', '`')">Code</el-button>
-          <el-button size="small" @click="onFormat('> ')">Quote</el-button>
-        </div>
+      <div class="flex justify-end mt-2">
         <el-button type="primary" size="small" @click="submit">send</el-button>
       </div>
     </div>
