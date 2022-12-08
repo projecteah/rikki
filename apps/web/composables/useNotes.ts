@@ -1,20 +1,20 @@
-export interface Memo {
+export interface Note {
   id: string
   content: string
   createdAt: number
   tags: string[]
 }
 
-export function useMemos() {
-  const memos = ref<Memo[]>(JSON.parse(localStorage.getItem('memos') || '[]'))
+export function useNotes() {
+  const notes = ref<Note[]>(JSON.parse(localStorage.getItem('notes') || '[]'))
 
-  watch(memos, (val) => {
-    localStorage.setItem('memos', JSON.stringify(val))
+  watch(notes, (val) => {
+    localStorage.setItem('notes', JSON.stringify(val))
   }, { deep: true })
 
-  const addMemo = (content: string) => {
+  const addNote = (content: string) => {
     const tags = extractTags(content)
-    memos.value.unshift({
+    notes.value.unshift({
       id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
       content,
       createdAt: Date.now(),
@@ -22,8 +22,8 @@ export function useMemos() {
     })
   }
 
-  const deleteMemo = (id: string) => {
-    memos.value = memos.value.filter(m => m.id !== id)
+  const deleteNote = (id: string) => {
+    notes.value = notes.value.filter(n => n.id !== id)
   }
 
   const extractTags = (content: string): string[] => {
@@ -33,9 +33,9 @@ export function useMemos() {
 
   const allTags = computed(() => {
     const set = new Set<string>()
-    memos.value.forEach(m => m.tags.forEach(t => set.add(t)))
+    notes.value.forEach(n => n.tags.forEach(t => set.add(t)))
     return Array.from(set)
   })
 
-  return { memos, addMemo, deleteMemo, allTags, extractTags }
+  return { notes, addNote, deleteNote, allTags, extractTags }
 }

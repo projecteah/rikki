@@ -22,28 +22,28 @@ router.post('/api/login', (ctx) => {
   }
 })
 
-router.get('/api/memos', async (ctx) => {
+router.get('/api/notes', async (ctx) => {
   const db = await getDb()
-  const memos = await db.collection('memos').find().sort({ createdAt: -1 }).toArray()
-  ctx.body = memos
+  const notes = await db.collection('notes').find().sort({ createdAt: -1 }).toArray()
+  ctx.body = notes
 })
 
-router.post('/api/memos', async (ctx) => {
+router.post('/api/notes', async (ctx) => {
   const db = await getDb()
   const { content, tags } = ctx.request.body as any
-  const memo = {
+  const note = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
     content,
     tags: tags || [],
     createdAt: Date.now(),
   }
-  await db.collection('memos').insertOne(memo)
-  ctx.body = memo
+  await db.collection('notes').insertOne(note)
+  ctx.body = note
 })
 
-router.delete('/api/memos/:id', async (ctx) => {
+router.delete('/api/notes/:id', async (ctx) => {
   const db = await getDb()
-  await db.collection('memos').deleteOne({ id: ctx.params.id })
+  await db.collection('notes').deleteOne({ id: ctx.params.id })
   ctx.body = { success: true }
 })
 

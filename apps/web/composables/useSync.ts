@@ -16,14 +16,14 @@ export function useSync() {
     Authorization: `Bearer ${config.value.token}`,
   })
 
-  const fetchMemos = async () => {
-    const res = await fetch(`${config.value.apiBase}/api/memos`, { headers: headers() })
+  const fetchNotes = async () => {
+    const res = await fetch(`${config.value.apiBase}/api/notes`, { headers: headers() })
     if (!res.ok) throw new Error('fetch failed')
     return res.json()
   }
 
-  const pushMemo = async (content: string, tags: string[]) => {
-    const res = await fetch(`${config.value.apiBase}/api/memos`, {
+  const pushNote = async (content: string, tags: string[]) => {
+    const res = await fetch(`${config.value.apiBase}/api/notes`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({ content, tags }),
@@ -32,8 +32,8 @@ export function useSync() {
     return res.json()
   }
 
-  const removeMemo = async (id: string) => {
-    await fetch(`${config.value.apiBase}/api/memos/${id}`, {
+  const removeNote = async (id: string) => {
+    await fetch(`${config.value.apiBase}/api/notes/${id}`, {
       method: 'DELETE',
       headers: headers(),
     })
@@ -52,5 +52,5 @@ export function useSync() {
 
   const configured = computed(() => !!(config.value.apiBase && config.value.token))
 
-  return { config, saveConfig, fetchMemos, pushMemo, removeMemo, login, configured }
+  return { config, saveConfig, fetchNotes, pushNote, removeNote, login, configured }
 }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Memo } from '../../composables/useMemos'
-import MemoCard from './MemoCard.vue'
+import { Note } from '../../composables/useNotes'
+import NoteCard from './NoteCard.vue'
 
 defineProps<{
-  memos: Memo[]
+  notes: Note[]
 }>()
 
 const emit = defineEmits<{
@@ -13,16 +13,16 @@ const emit = defineEmits<{
 
 <template>
   <div class="flex-1 overflow-auto px-4 py-3">
-    <div v-if="memos.length" class="flex flex-col gap-3">
-      <MemoCard
-        v-for="memo in memos"
-        :key="memo.id"
-        :memo="memo"
+    <div v-if="notes.length" class="flex flex-col gap-3">
+      <NoteCard
+        v-for="note in notes"
+        :key="note.id"
+        :note="note"
         @delete="emit('delete', $event)"
       />
     </div>
     <div v-else class="flex items-center justify-center h-full text-sm text-[var(--el-text-color-secondary)]">
-      no memos yet
+      no notes yet
     </div>
   </div>
 </template>

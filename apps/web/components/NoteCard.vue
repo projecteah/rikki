@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Memo } from '../../composables/useMemos'
-import { formatTime, extractTags } from '../../utils'
+import { Note } from '../../composables/useNotes'
+import { formatTime } from '../../utils'
 
 defineProps<{
-  memo: Memo
+  note: Note
 }>()
 
 const emit = defineEmits<{
@@ -27,12 +27,12 @@ const render = (content: string) => {
 <template>
   <div class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
     <div class="flex items-start justify-between gap-2">
-      <div class="flex-1 text-sm markdown-body" v-html="render(memo.content)"></div>
-      <el-button size="small" type="danger" link @click="emit('delete', memo.id)">delete</el-button>
+      <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
+      <el-button size="small" type="danger" link @click="emit('delete', note.id)">delete</el-button>
     </div>
     <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
-      <span>{{ formatTime(memo.createdAt) }}</span>
-      <span v-for="tag in memo.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
+      <span>{{ formatTime(note.createdAt) }}</span>
+      <span v-for="tag in note.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
     </div>
   </div>
 </template>

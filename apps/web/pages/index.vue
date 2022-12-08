@@ -1,25 +1,25 @@
 <script setup lang="ts">
-const { memos, addMemo, deleteMemo, allTags } = useMemos()
+const { notes, addNote, deleteNote, allTags } = useNotes()
 const { isDark, toggleDark } = useTheme()
-const { config, login, configured, fetchMemos, pushMemo } = useSync()
+const { config, login, configured, fetchNotes, pushNote } = useSync()
 
 const input = ref('')
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const syncing = ref(false)
 
-const filteredMemos = computed(() => {
-  if (!activeTag.value) return memos.value
-  return memos.value.filter(m => m.tags.includes(activeTag.value!))
+const filteredNotes = computed(() => {
+  if (!activeTag.value) return notes.value
+  return notes.value.filter(n => n.tags.includes(activeTag.value!))
 })
 
 const submit = () => {
   const text = input.value.trim()
   if (!text) return
-  addMemo(text)
+  addNote(text)
   if (configured.value) {
     const tags = extractTags(text)
-    pushMemo(text, tags).catch(() => {})
+    pushNote(text, tags).catch(() => {})
   }
   input.value = ''
 }
@@ -36,10 +36,10 @@ const saveSettings = async (apiBase: string, password: string) => {
 const syncNow = async () => {
   syncing.value = true
   try {
-    const remoteMemos = await fetchMemos()
-    remoteMemos.forEach((m: any) => {
-      if (!memos.value.find(local => local.id === m.id)) {
-        memos.value.unshift(m)
+    const remoteNotes = await fetchNotes()
+    remoteNotes.forEach((n: any) => {
+      if (!notes.value.find(local => local.id === n.id)) {
+        notes.value.unshift(n)
       }
     })
   } catch {
@@ -60,11 +60,11 @@ const syncNow = async () => {
       </div>
     </header>
 
-    <MemoInput v-model="input" @submit="submit" />
+    <NoteInput v-model="input" @submit="submit" />
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
 
-    <MemoList :memos="filteredMemos" @delete="deleteMemo" />
+    <NoteList :notes="filteredNotes" @delete="deleteNote" />
 
     <SyncDialog
       v-model:visible="showSettings"
