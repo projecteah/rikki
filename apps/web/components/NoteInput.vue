@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const props = defineProps<{
   modelValue: string
 }>()
@@ -18,14 +20,14 @@ const onSubmit = () => {
     <textarea
       :value="props.modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
-      placeholder="what's on your mind..."
+      :placeholder="t('input.placeholder')"
       class="w-full resize-none border-none outline-none text-sm bg-transparent"
       rows="3"
       @keydown.meta.enter="onSubmit"
       @keydown.ctrl.enter="onSubmit"
     />
     <div class="flex justify-end mt-2">
-      <el-button type="primary" size="small" @click="onSubmit">send</el-button>
+      <el-button type="primary" size="small" @click="onSubmit">{{ t('input.send') }}</el-button>
     </div>
   </div>
 </template>

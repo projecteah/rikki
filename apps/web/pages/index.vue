@@ -2,6 +2,7 @@
 const { notes, addNote, deleteNote, allTags } = useNotes()
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
+const { t } = useI18n()
 
 const input = ref('')
 const activeTag = ref<string | null>(null)
@@ -29,7 +30,7 @@ const saveSettings = async (apiBase: string, password: string) => {
     await login(apiBase, password)
     showSettings.value = false
   } catch {
-    alert('login failed')
+    alert(t('settings.loginFailed'))
   }
 }
 
@@ -43,7 +44,7 @@ const syncNow = async () => {
       }
     })
   } catch {
-    alert('sync failed')
+    alert(t('settings.syncFailed'))
   }
   syncing.value = false
 }
@@ -52,10 +53,10 @@ const syncNow = async () => {
 <template>
   <div class="flex flex-col h-screen">
     <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--el-border-color)]">
-      <h1 class="text-lg font-semibold">Rikki</h1>
+      <h1 class="text-lg font-semibold">{{ t('app.title') }}</h1>
       <div class="flex items-center gap-2">
-        <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">sync</el-button>
-        <el-button size="small" @click="showSettings = true">settings</el-button>
+        <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">{{ t('action.sync') }}</el-button>
+        <el-button size="small" @click="showSettings = true">{{ t('action.settings') }}</el-button>
         <el-switch v-model="isDark" @change="toggleDark" />
       </div>
     </header>

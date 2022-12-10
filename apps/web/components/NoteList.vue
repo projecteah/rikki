@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Note } from '../../composables/useNotes'
 import NoteCard from './NoteCard.vue'
+const { t } = useI18n()
 
 defineProps<{
   notes: Note[]
@@ -22,7 +23,7 @@ const emit = defineEmits<{
       />
     </div>
     <div v-else class="flex items-center justify-center h-full text-sm text-[var(--el-text-color-secondary)]">
-      no notes yet
+      {{ t('empty') }}
     </div>
   </div>
 </template>

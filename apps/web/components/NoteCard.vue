@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Note } from '../../composables/useNotes'
 import { formatTime } from '../../utils'
+const { t } = useI18n()
 
 defineProps<{
   note: Note
@@ -28,7 +29,7 @@ const render = (content: string) => {
   <div class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
     <div class="flex items-start justify-between gap-2">
       <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
-      <el-button size="small" type="danger" link @click="emit('delete', note.id)">delete</el-button>
+      <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
     </div>
     <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
       <span>{{ formatTime(note.createdAt) }}</span>
