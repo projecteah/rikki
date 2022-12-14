@@ -1,0 +1,15 @@
+{
+  "app": { "title": "李記" },
+  "input": { "placeholder": "心中所思何也...", "send": "發" },
+  "settings": {
+    "title": "同步之設",
+    "apiBase": "介面之位",
+    "password": "密語",
+    "cancel": "罷",
+    "save": "存",
+    "loginFailed": "登入未果",
+    "syncFailed": "同步未果"
+  },
+  "action": { "sync": "同步", "delete": "刪", "settings": "設" },
+  "empty": "尚無札記"
+}
