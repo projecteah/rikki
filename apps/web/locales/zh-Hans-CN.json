@@ -8,6 +8,7 @@
   },
   "settings": {
     "title": "同步设置",
+    "language": "语言",
     "apiBase": "接口地址",
     "password": "密码",
     "cancel": "取消",

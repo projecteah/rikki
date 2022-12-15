@@ -3,6 +3,7 @@
   "input": { "placeholder": "心中所思何也...", "send": "發" },
   "settings": {
     "title": "同步之設",
+    "language": "語",
     "apiBase": "介面之位",
     "password": "密語",
     "cancel": "罷",

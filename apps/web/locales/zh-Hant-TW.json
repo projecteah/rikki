@@ -3,6 +3,7 @@
   "input": { "placeholder": "此刻在想什麼...", "send": "傳送" },
   "settings": {
     "title": "同步設定",
+    "language": "語言",
     "apiBase": "介面位址",
     "password": "密碼",
     "cancel": "取消",

@@ -8,6 +8,7 @@
   },
   "settings": {
     "title": "sync settings",
+    "language": "language",
     "apiBase": "api base url",
     "password": "password",
     "cancel": "cancel",
