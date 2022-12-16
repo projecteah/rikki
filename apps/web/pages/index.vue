@@ -67,7 +67,7 @@ const syncNow = async () => {
 
     <NoteList :notes="filteredNotes" @delete="deleteNote" />
 
-    <SyncDialog
+    <SettingsDialog
       v-model:visible="showSettings"
       :config="config"
       @save="saveSettings"
