@@ -3,6 +3,7 @@ export interface Note {
   content: string
   createdAt: number
   tags: string[]
+  visibility: 'public' | 'private'
 }
 
 export function useNotes() {
@@ -12,18 +13,24 @@ export function useNotes() {
     localStorage.setItem('notes', JSON.stringify(val))
   }, { deep: true })
 
-  const addNote = (content: string) => {
+  const addNote = (content: string, visibility: 'public' | 'private' = 'private') => {
     const tags = extractTags(content)
     notes.value.unshift({
       id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
       content,
       createdAt: Date.now(),
       tags,
+      visibility,
     })
   }
 
   const deleteNote = (id: string) => {
     notes.value = notes.value.filter(n => n.id !== id)
+  }
+
+  const toggleVisibility = (id: string) => {
+    const note = notes.value.find(n => n.id === id)
+    if (note) note.visibility = note.visibility === 'private' ? 'public' : 'private'
   }
 
   const extractTags = (content: string): string[] => {
@@ -37,5 +44,5 @@ export function useNotes() {
     return Array.from(set)
   })
 
-  return { notes, addNote, deleteNote, allTags, extractTags }
+  return { notes, addNote, deleteNote, toggleVisibility, allTags, extractTags }
 }
