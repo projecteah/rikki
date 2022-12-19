@@ -3,12 +3,13 @@ import { Note } from '../../composables/useNotes'
 import { formatTime } from '../../utils'
 const { t } = useI18n()
 
-defineProps<{
+const props = defineProps<{
   note: Note
 }>()
 
 const emit = defineEmits<{
   delete: [id: string]
+  toggle: [id: string]
 }>()
 
 const render = (content: string) => {
@@ -29,7 +30,15 @@ const render = (content: string) => {
   <div class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
     <div class="flex items-start justify-between gap-2">
       <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
-      <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
+      <div class="flex items-center gap-1">
+        <el-button size="small" link @click="emit('toggle', note.id)">
+          <el-icon :size="14">
+            <Lock v-if="note.visibility === 'private'" />
+            <View v-else />
+          </el-icon>
+        </el-button>
+        <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
+      </div>
     </div>
     <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
       <span>{{ formatTime(note.createdAt) }}</span>

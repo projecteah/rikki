@@ -12,5 +12,9 @@
     "syncFailed": "同步失敗"
   },
   "action": { "sync": "同步", "delete": "刪除", "settings": "設定" },
+  "visibility": {
+    "private": "私有",
+    "public": "公開"
+  },
   "empty": "還沒有筆記"
 }

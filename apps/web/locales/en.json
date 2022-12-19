@@ -21,5 +21,9 @@
     "delete": "delete",
     "settings": "settings"
   },
+  "visibility": {
+    "private": "private",
+    "public": "public"
+  },
   "empty": "no notes yet"
 }

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const { notes, addNote, deleteNote, allTags } = useNotes()
+const { notes, addNote, deleteNote, toggleVisibility, allTags } = useNotes()
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
 
 const input = ref('')
+const visibility = ref<'public' | 'private'>('private')
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const syncing = ref(false)
@@ -17,7 +18,7 @@ const filteredNotes = computed(() => {
 const submit = () => {
   const text = input.value.trim()
   if (!text) return
-  addNote(text)
+  addNote(text, visibility.value)
   if (configured.value) {
     const tags = extractTags(text)
     pushNote(text, tags).catch(() => {})
@@ -61,11 +62,11 @@ const syncNow = async () => {
       </div>
     </header>
 
-    <NoteInput v-model="input" @submit="submit" />
+    <NoteInput v-model="input" v-model:visibility="visibility" @submit="submit" />
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
 
-    <NoteList :notes="filteredNotes" @delete="deleteNote" />
+    <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" />
 
     <SettingsDialog
       v-model:visible="showSettings"

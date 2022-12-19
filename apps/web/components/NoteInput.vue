@@ -3,10 +3,12 @@ const { t } = useI18n()
 
 const props = defineProps<{
   modelValue: string
+  visibility: 'public' | 'private'
 }>()
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
+  'update:visibility': [value: 'public' | 'private']
   submit: []
 }>()
 
@@ -26,7 +28,11 @@ const onSubmit = () => {
       @keydown.meta.enter="onSubmit"
       @keydown.ctrl.enter="onSubmit"
     />
-    <div class="flex justify-end mt-2">
+    <div class="flex items-center justify-between mt-2">
+      <el-radio-group v-model="props.visibility" @change="emit('update:visibility', $event)">
+        <el-radio-button value="private">{{ t('visibility.private') }}</el-radio-button>
+        <el-radio-button value="public">{{ t('visibility.public') }}</el-radio-button>
+      </el-radio-group>
       <el-button type="primary" size="small" @click="onSubmit">{{ t('input.send') }}</el-button>
     </div>
   </div>

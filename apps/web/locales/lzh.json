@@ -12,5 +12,9 @@
     "syncFailed": "同步未果"
   },
   "action": { "sync": "同步", "delete": "刪", "settings": "設" },
+  "visibility": {
+    "private": "密",
+    "public": "公"
+  },
   "empty": "尚無札記"
 }
