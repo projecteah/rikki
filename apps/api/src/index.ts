@@ -30,15 +30,23 @@ router.get('/api/notes', async (ctx) => {
 
 router.post('/api/notes', async (ctx) => {
   const db = await getDb()
-  const { content, tags } = ctx.request.body as any
+  const { content, tags, visibility } = ctx.request.body as any
   const note = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
     content,
     tags: tags || [],
+    visibility: visibility || 'private',
     createdAt: Date.now(),
   }
   await db.collection('notes').insertOne(note)
   ctx.body = note
+})
+
+router.patch('/api/notes/:id/visibility', async (ctx) => {
+  const db = await getDb()
+  const { visibility } = ctx.request.body as any
+  await db.collection('notes').updateOne({ id: ctx.params.id }, { $set: { visibility } })
+  ctx.body = { success: true }
 })
 
 router.delete('/api/notes/:id', async (ctx) => {
