@@ -6,11 +6,21 @@ import { auth } from './auth'
 const app = new Koa()
 const router = new Router()
 
-app.use(auth())
-
 router.get('/api/health', (ctx) => {
   ctx.body = { status: 'ok', timestamp: new Date().toISOString() }
 })
+
+router.get('/api/public/notes', async (ctx) => {
+  const db = await getDb()
+  const notes = await db.collection('notes')
+    .find({ visibility: 'public' })
+    .sort({ createdAt: -1 })
+    .project({ _id: 0 })
+    .toArray()
+  ctx.body = notes
+})
+
+app.use(auth())
 
 router.post('/api/login', (ctx) => {
   const { password } = ctx.request.body as any
