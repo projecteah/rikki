@@ -15,6 +15,10 @@ const filteredNotes = computed(() => {
   return notes.value.filter(n => n.tags.includes(activeTag.value!))
 })
 
+const wordCount = computed(() => {
+  return notes.value.reduce((sum, n) => sum + n.content.length, 0)
+})
+
 const submit = () => {
   const text = input.value.trim()
   if (!text) return
@@ -54,7 +58,10 @@ const syncNow = async () => {
 <template>
   <div class="flex flex-col h-screen">
     <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--el-border-color)]">
-      <h1 class="text-lg font-semibold">{{ t('app.title') }}</h1>
+      <div class="flex items-center gap-2">
+        <h1 class="text-lg font-semibold">{{ t('app.title') }}</h1>
+        <span class="text-xs text-[var(--el-text-color-secondary)]">{{ wordCount }} chars</span>
+      </div>
       <div class="flex items-center gap-2">
         <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">{{ t('action.sync') }}</el-button>
         <el-button size="small" @click="showSettings = true">{{ t('action.settings') }}</el-button>
