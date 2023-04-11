@@ -5,14 +5,20 @@ const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
 
 const input = ref('')
+const search = ref('')
 const visibility = ref<'public' | 'private'>('private')
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const syncing = ref(false)
 
 const filteredNotes = computed(() => {
-  if (!activeTag.value) return notes.value
-  return notes.value.filter(n => n.tags.includes(activeTag.value!))
+  let result = notes.value
+  if (activeTag.value) result = result.filter(n => n.tags.includes(activeTag.value!))
+  if (search.value) {
+    const q = search.value.toLowerCase()
+    result = result.filter(n => n.content.toLowerCase().includes(q))
+  }
+  return result
 })
 
 const wordCount = computed(() => {
@@ -68,6 +74,10 @@ const syncNow = async () => {
         <el-switch v-model="isDark" @change="toggleDark" />
       </div>
     </header>
+
+    <div class="px-4 py-2 border-b border-[var(--el-border-color)]">
+      <el-input v-model="search" :placeholder="t('search.placeholder')" clearable />
+    </div>
 
     <NoteInput v-model="input" v-model:visibility="visibility" @submit="submit" />
 

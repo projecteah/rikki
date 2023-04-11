@@ -25,5 +25,8 @@
     "private": "私有",
     "public": "公开"
   },
+  "search": {
+    "placeholder": "搜索笔记..."
+  },
   "empty": "还没有笔记"
 }

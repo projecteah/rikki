@@ -16,5 +16,8 @@
     "private": "私有",
     "public": "公開"
   },
+  "search": {
+    "placeholder": "搜尋筆記..."
+  },
   "empty": "還沒有筆記"
 }

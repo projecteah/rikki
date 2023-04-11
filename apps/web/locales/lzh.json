@@ -16,5 +16,8 @@
     "private": "密",
     "public": "公"
   },
+  "search": {
+    "placeholder": "索札記..."
+  },
   "empty": "尚無札記"
 }

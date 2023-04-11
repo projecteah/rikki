@@ -25,5 +25,8 @@
     "private": "private",
     "public": "public"
   },
+  "search": {
+    "placeholder": "search notes..."
+  },
   "empty": "no notes yet"
 }
