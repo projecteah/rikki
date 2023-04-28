@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { notes, addNote, deleteNote, toggleVisibility, allTags } = useNotes()
+const { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, allTags } = useNotes()
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
@@ -12,7 +12,7 @@ const showSettings = ref(false)
 const syncing = ref(false)
 
 const filteredNotes = computed(() => {
-  let result = notes.value
+  let result = sortedNotes.value
   if (activeTag.value) result = result.filter(n => n.tags.includes(activeTag.value!))
   if (search.value) {
     const q = search.value.toLowerCase()
@@ -83,7 +83,7 @@ const syncNow = async () => {
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
 
-    <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" />
+    <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" @pin="togglePin" />
 
     <SettingsDialog
       v-model:visible="showSettings"

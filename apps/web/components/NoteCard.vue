@@ -10,6 +10,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   delete: [id: string]
   toggle: [id: string]
+  pin: [id: string]
 }>()
 
 const render = (content: string) => {
@@ -31,6 +32,12 @@ const render = (content: string) => {
     <div class="flex items-start justify-between gap-2">
       <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
       <div class="flex items-center gap-1">
+        <el-button size="small" link @click="emit('pin', note.id)">
+          <el-icon :size="14">
+            <StarFilled v-if="note.pinned" />
+            <Star v-else />
+          </el-icon>
+        </el-button>
         <el-button size="small" link @click="emit('toggle', note.id)">
           <el-icon :size="14">
             <Lock v-if="note.visibility === 'private'" />

@@ -4,6 +4,7 @@ export interface Note {
   createdAt: number
   tags: string[]
   visibility: 'public' | 'private'
+  pinned?: boolean
 }
 
 export function useNotes() {
@@ -33,6 +34,11 @@ export function useNotes() {
     if (note) note.visibility = note.visibility === 'private' ? 'public' : 'private'
   }
 
+  const togglePin = (id: string) => {
+    const note = notes.value.find(n => n.id === id)
+    if (note) note.pinned = !note.pinned
+  }
+
   const extractTags = (content: string): string[] => {
     const matches = content.match(/#(\S+)/g)
     return matches ? matches.map(t => t.slice(1)) : []
@@ -44,5 +50,13 @@ export function useNotes() {
     return Array.from(set)
   })
 
-  return { notes, addNote, deleteNote, toggleVisibility, allTags, extractTags }
+  const sortedNotes = computed(() => {
+    return [...notes.value].sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1
+      if (!a.pinned && b.pinned) return 1
+      return b.createdAt - a.createdAt
+    })
+  })
+
+  return { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, allTags, extractTags }
 }
