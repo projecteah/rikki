@@ -19,7 +19,11 @@
   "action": {
     "sync": "同步",
     "delete": "删除",
-    "settings": "设置"
+    "settings": "设置",
+    "dailyReview": "每日回顾"
+  },
+  "dailyReview": {
+    "title": "过去的今天..."
   },
   "visibility": {
     "private": "私有",

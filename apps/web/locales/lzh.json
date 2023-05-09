@@ -11,7 +11,15 @@
     "loginFailed": "登入未果",
     "syncFailed": "同步未果"
   },
-  "action": { "sync": "同步", "delete": "刪", "settings": "設" },
+  "action": {
+    "sync": "同步",
+    "delete": "刪",
+    "settings": "設",
+    "dailyReview": "每日回顧"
+  },
+  "dailyReview": {
+    "title": "昔日今日..."
+  },
   "visibility": {
     "private": "密",
     "public": "公"

@@ -10,6 +10,16 @@ const visibility = ref<'public' | 'private'>('private')
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const syncing = ref(false)
+const dailyReview = ref(false)
+
+const dailyReviewNotes = computed(() => {
+  if (!dailyReview.value) return []
+  const daysAgo = Math.floor(Math.random() * 365) + 1
+  const target = Date.now() - daysAgo * 86400000
+  const dayStart = new Date(target).setHours(0, 0, 0, 0)
+  const dayEnd = dayStart + 86400000
+  return notes.value.filter(n => n.createdAt >= dayStart && n.createdAt < dayEnd)
+})
 
 const filteredNotes = computed(() => {
   let result = sortedNotes.value
@@ -69,6 +79,7 @@ const syncNow = async () => {
         <span class="text-xs text-[var(--el-text-color-secondary)]">{{ wordCount }} chars</span>
       </div>
       <div class="flex items-center gap-2">
+        <el-button size="small" @click="dailyReview = !dailyReview">{{ t('action.dailyReview') }}</el-button>
         <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">{{ t('action.sync') }}</el-button>
         <el-button size="small" @click="showSettings = true">{{ t('action.settings') }}</el-button>
         <el-switch v-model="isDark" @change="toggleDark" />
@@ -82,6 +93,15 @@ const syncNow = async () => {
     <NoteInput v-model="input" v-model:visibility="visibility" @submit="submit" />
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
+
+    <div v-if="dailyReview && dailyReviewNotes.length" class="px-4 py-3 border-b border-[var(--el-border-color)]">
+      <div class="text-xs text-[var(--el-text-color-secondary)] mb-2">{{ t('dailyReview.title') }}</div>
+      <div class="flex flex-col gap-2">
+        <div v-for="note in dailyReviewNotes" :key="note.id" class="p-2 rounded bg-[var(--el-fill-color-light)] text-sm">
+          {{ note.content }}
+        </div>
+      </div>
+    </div>
 
     <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" @pin="togglePin" />
 

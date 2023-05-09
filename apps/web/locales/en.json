@@ -19,7 +19,11 @@
   "action": {
     "sync": "sync",
     "delete": "delete",
-    "settings": "settings"
+    "settings": "settings",
+    "dailyReview": "daily review"
+  },
+  "dailyReview": {
+    "title": "on this day in the past..."
   },
   "visibility": {
     "private": "private",
