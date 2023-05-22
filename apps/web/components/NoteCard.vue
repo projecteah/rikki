@@ -11,7 +11,25 @@ const emit = defineEmits<{
   delete: [id: string]
   toggle: [id: string]
   pin: [id: string]
+  edit: [id: string, content: string]
 }>()
+
+const editing = ref(false)
+const editContent = ref('')
+
+const startEdit = () => {
+  editContent.value = props.note.content
+  editing.value = true
+}
+
+const saveEdit = () => {
+  emit('edit', props.note.id, editContent.value.trim())
+  editing.value = false
+}
+
+const cancelEdit = () => {
+  editing.value = false
+}
 
 const render = (content: string) => {
   return content
@@ -29,27 +47,43 @@ const render = (content: string) => {
 
 <template>
   <div class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
-    <div class="flex items-start justify-between gap-2">
-      <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
-      <div class="flex items-center gap-1">
-        <el-button size="small" link @click="emit('pin', note.id)">
-          <el-icon :size="14">
-            <StarFilled v-if="note.pinned" />
-            <Star v-else />
-          </el-icon>
-        </el-button>
-        <el-button size="small" link @click="emit('toggle', note.id)">
-          <el-icon :size="14">
-            <Lock v-if="note.visibility === 'private'" />
-            <View v-else />
-          </el-icon>
-        </el-button>
-        <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
+    <div v-if="editing">
+      <textarea
+        v-model="editContent"
+        class="w-full resize-none border border-[var(--el-border-color)] rounded p-2 text-sm bg-transparent"
+        rows="3"
+      />
+      <div class="flex justify-end gap-1 mt-2">
+        <el-button size="small" @click="cancelEdit">{{ t('action.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="saveEdit">{{ t('action.save') }}</el-button>
       </div>
     </div>
-    <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
-      <span>{{ formatTime(note.createdAt) }}</span>
-      <span v-for="tag in note.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
+    <div v-else>
+      <div class="flex items-start justify-between gap-2">
+        <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
+        <div class="flex items-center gap-1">
+          <el-button size="small" link @click="startEdit">
+            <el-icon :size="14"><Edit /></el-icon>
+          </el-button>
+          <el-button size="small" link @click="emit('pin', note.id)">
+            <el-icon :size="14">
+              <StarFilled v-if="note.pinned" />
+              <Star v-else />
+            </el-icon>
+          </el-button>
+          <el-button size="small" link @click="emit('toggle', note.id)">
+            <el-icon :size="14">
+              <Lock v-if="note.visibility === 'private'" />
+              <View v-else />
+            </el-icon>
+          </el-button>
+          <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
+        <span>{{ formatTime(note.createdAt) }}</span>
+        <span v-for="tag in note.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
+      </div>
     </div>
   </div>
 </template>

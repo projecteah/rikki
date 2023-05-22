@@ -20,6 +20,9 @@
     "sync": "同步",
     "delete": "删除",
     "settings": "设置",
+    "edit": "编辑",
+    "cancel": "取消",
+    "save": "保存",
     "dailyReview": "每日回顾"
   },
   "dailyReview": {

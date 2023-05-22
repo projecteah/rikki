@@ -11,6 +11,7 @@ const emit = defineEmits<{
   delete: [id: string]
   toggle: [id: string]
   pin: [id: string]
+  edit: [id: string, content: string]
 }>()
 </script>
 
@@ -24,6 +25,7 @@ const emit = defineEmits<{
         @delete="emit('delete', $event)"
         @toggle="emit('toggle', $event)"
         @pin="emit('pin', $event)"
+        @edit="emit('edit', $event)"
       />
     </div>
     <div v-else class="flex items-center justify-center h-full text-sm text-[var(--el-text-color-secondary)]">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, allTags } = useNotes()
+const { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, editNote, allTags } = useNotes()
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
@@ -103,7 +103,7 @@ const syncNow = async () => {
       </div>
     </div>
 
-    <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" @pin="togglePin" />
+    <NoteList :notes="filteredNotes" @delete="deleteNote" @toggle="toggleVisibility" @pin="togglePin" @edit="editNote" />
 
     <SettingsDialog
       v-model:visible="showSettings"

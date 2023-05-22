@@ -15,6 +15,9 @@
     "sync": "同步",
     "delete": "刪",
     "settings": "設",
+    "edit": "改",
+    "cancel": "罷",
+    "save": "存",
     "dailyReview": "每日回顧"
   },
   "dailyReview": {

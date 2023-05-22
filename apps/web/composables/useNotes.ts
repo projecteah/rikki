@@ -39,6 +39,14 @@ export function useNotes() {
     if (note) note.pinned = !note.pinned
   }
 
+  const editNote = (id: string, content: string) => {
+    const note = notes.value.find(n => n.id === id)
+    if (note) {
+      note.content = content
+      note.tags = extractTags(content)
+    }
+  }
+
   const extractTags = (content: string): string[] => {
     const matches = content.match(/#(\S+)/g)
     return matches ? matches.map(t => t.slice(1)) : []
@@ -58,5 +66,5 @@ export function useNotes() {
     })
   })
 
-  return { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, allTags, extractTags }
+  return { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, editNote, allTags, extractTags }
 }

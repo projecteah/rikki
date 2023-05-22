@@ -20,6 +20,9 @@
     "sync": "sync",
     "delete": "delete",
     "settings": "settings",
+    "edit": "edit",
+    "cancel": "cancel",
+    "save": "save",
     "dailyReview": "daily review"
   },
   "dailyReview": {
