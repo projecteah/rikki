@@ -5,6 +5,7 @@ const { t, locale, availableLocales } = useI18n()
 defineProps<{
   visible: boolean
   config: SyncConfig
+  loading?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -56,7 +57,7 @@ const localeLabels: Record<string, string> = {
     </el-form>
     <template #footer>
       <el-button @click="emit('update:visible', false)">{{ t('settings.cancel') }}</el-button>
-      <el-button type="primary" @click="onSave">{{ t('settings.save') }}</el-button>
+      <el-button type="primary" :loading="loading" @click="onSave">{{ t('settings.save') }}</el-button>
     </template>
   </el-dialog>
 </template>

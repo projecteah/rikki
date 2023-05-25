@@ -10,6 +10,7 @@ const visibility = ref<'public' | 'private'>('private')
 const activeTag = ref<string | null>(null)
 const showSettings = ref(false)
 const syncing = ref(false)
+const saving = ref(false)
 const dailyReview = ref(false)
 
 const dailyReviewNotes = computed(() => {
@@ -47,12 +48,14 @@ const submit = () => {
 }
 
 const saveSettings = async (apiBase: string, password: string) => {
+  saving.value = true
   try {
     await login(apiBase, password)
     showSettings.value = false
   } catch {
     alert(t('settings.loginFailed'))
   }
+  saving.value = false
 }
 
 const syncNow = async () => {
@@ -108,6 +111,7 @@ const syncNow = async () => {
     <SettingsDialog
       v-model:visible="showSettings"
       :config="config"
+      :loading="saving"
       @save="saveSettings"
     />
   </div>
