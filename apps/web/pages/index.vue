@@ -3,6 +3,7 @@ const { notes, sortedNotes, addNote, deleteNote, toggleVisibility, togglePin, ed
 const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
+const { error } = useNotify()
 
 const input = ref('')
 const search = ref('')
@@ -53,7 +54,7 @@ const saveSettings = async (apiBase: string, password: string) => {
     await login(apiBase, password)
     showSettings.value = false
   } catch {
-    alert(t('settings.loginFailed'))
+    error(t('settings.loginFailed'))
   }
   saving.value = false
 }
@@ -68,7 +69,7 @@ const syncNow = async () => {
       }
     })
   } catch {
-    alert(t('settings.syncFailed'))
+    error(t('settings.syncFailed'))
   }
   syncing.value = false
 }
