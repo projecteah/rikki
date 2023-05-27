@@ -1,3 +1,5 @@
+import * as api from '../api'
+
 export interface SyncConfig {
   apiBase: string
   token: string
@@ -11,42 +13,15 @@ export function useSync() {
     localStorage.setItem('rikki-sync', JSON.stringify(config.value))
   }
 
-  const headers = () => ({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${config.value.token}`,
-  })
+  const fetchNotes = () => api.getNotes(config.value.apiBase, config.value.token)
 
-  const fetchNotes = async () => {
-    const res = await fetch(`${config.value.apiBase}/api/notes`, { headers: headers() })
-    if (!res.ok) throw new Error('fetch failed')
-    return res.json()
-  }
+  const pushNote = (content: string, tags: string[]) =>
+    api.createNote(config.value.apiBase, config.value.token, content, tags)
 
-  const pushNote = async (content: string, tags: string[]) => {
-    const res = await fetch(`${config.value.apiBase}/api/notes`, {
-      method: 'POST',
-      headers: headers(),
-      body: JSON.stringify({ content, tags }),
-    })
-    if (!res.ok) throw new Error('push failed')
-    return res.json()
-  }
-
-  const removeNote = async (id: string) => {
-    await fetch(`${config.value.apiBase}/api/notes/${id}`, {
-      method: 'DELETE',
-      headers: headers(),
-    })
-  }
+  const removeNote = (id: string) => api.deleteNote(config.value.apiBase, config.value.token, id)
 
   const login = async (apiBase: string, password: string) => {
-    const res = await fetch(`${apiBase}/api/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
-    })
-    if (!res.ok) throw new Error('login failed')
-    const { token } = await res.json()
+    const token = await api.login(apiBase, password)
     saveConfig(apiBase, token)
   }
 
