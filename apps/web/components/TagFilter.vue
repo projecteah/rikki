@@ -10,8 +10,8 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div v-if="tags.length" class="px-4 py-2 border-b border-[var(--el-border-color)] flex gap-2 flex-wrap">
-    <el-tag
+  <div v-if="tags.length" class="px-4 py-2 border-b border-[var(--n-border-color)] flex gap-2 flex-wrap">
+    <n-tag
       v-for="tag in tags"
       :key="tag"
       :type="activeTag === tag ? 'primary' : 'info'"
@@ -19,6 +19,6 @@ const emit = defineEmits<{
       @click="emit('select', activeTag === tag ? null : tag)"
     >
       #{{ tag }}
-    </el-tag>
+    </n-tag>
   </div>
 </template>

@@ -1,16 +1,18 @@
-import { ElMessage } from 'element-plus'
+import { useMessage } from 'naive-ui'
 
 export function useNotify() {
+  const message = useMessage()
+
   const success = (msg: string) => {
-    ElMessage.success(msg)
+    message.success(msg)
   }
 
   const error = (msg: string) => {
-    ElMessage.error(msg)
+    message.error(msg)
   }
 
   const warning = (msg: string) => {
-    ElMessage.warning(msg)
+    message.warning(msg)
   }
 
   return { success, error, warning }

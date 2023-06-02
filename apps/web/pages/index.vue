@@ -77,31 +77,31 @@ const syncNow = async () => {
 
 <template>
   <div class="flex flex-col h-screen">
-    <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--el-border-color)]">
+    <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--n-border-color)]">
       <div class="flex items-center gap-2">
         <h1 class="text-lg font-semibold">{{ t('app.title') }}</h1>
-        <span class="text-xs text-[var(--el-text-color-secondary)]">{{ wordCount }} chars</span>
+        <span class="text-xs text-[var(--n-text-color-disabled)]">{{ wordCount }} chars</span>
       </div>
       <div class="flex items-center gap-2">
-        <el-button size="small" @click="dailyReview = !dailyReview">{{ t('action.dailyReview') }}</el-button>
-        <el-button v-if="configured" size="small" :loading="syncing" @click="syncNow">{{ t('action.sync') }}</el-button>
-        <el-button size="small" @click="showSettings = true">{{ t('action.settings') }}</el-button>
-        <el-switch v-model="isDark" @change="toggleDark" />
+        <n-button size="small" @click="dailyReview = !dailyReview">{{ t('action.dailyReview') }}</n-button>
+        <n-button v-if="configured" size="small" :loading="syncing" @click="syncNow">{{ t('action.sync') }}</n-button>
+        <n-button size="small" @click="showSettings = true">{{ t('action.settings') }}</n-button>
+        <n-switch v-model:value="isDark" @update:value="toggleDark" />
       </div>
     </header>
 
-    <div class="px-4 py-2 border-b border-[var(--el-border-color)]">
-      <el-input v-model="search" :placeholder="t('search.placeholder')" clearable />
+    <div class="px-4 py-2 border-b border-[var(--n-border-color)]">
+      <n-input v-model:value="search" :placeholder="t('search.placeholder')" clearable />
     </div>
 
     <NoteInput v-model="input" v-model:visibility="visibility" @submit="submit" />
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
 
-    <div v-if="dailyReview && dailyReviewNotes.length" class="px-4 py-3 border-b border-[var(--el-border-color)]">
-      <div class="text-xs text-[var(--el-text-color-secondary)] mb-2">{{ t('dailyReview.title') }}</div>
+    <div v-if="dailyReview && dailyReviewNotes.length" class="px-4 py-3 border-b border-[var(--n-border-color)]">
+      <div class="text-xs text-[var(--n-text-color-disabled)] mb-2">{{ t('dailyReview.title') }}</div>
       <div class="flex flex-col gap-2">
-        <div v-for="note in dailyReviewNotes" :key="note.id" class="p-2 rounded bg-[var(--el-fill-color-light)] text-sm">
+        <div v-for="note in dailyReviewNotes" :key="note.id" class="p-2 rounded bg-[var(--n-color)] text-sm">
           {{ note.content }}
         </div>
       </div>

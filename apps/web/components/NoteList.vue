@@ -28,7 +28,7 @@ const emit = defineEmits<{
         @edit="emit('edit', $event)"
       />
     </div>
-    <div v-else class="flex items-center justify-center h-full text-sm text-[var(--el-text-color-secondary)]">
+    <div v-else class="flex items-center justify-center h-full text-sm text-[var(--n-text-color-disabled)]">
       {{ t('empty') }}
     </div>
   </div>

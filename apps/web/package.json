@@ -8,7 +8,6 @@
     "postinstall": "nuxi prepare"
   },
   "dependencies": {
-    "element-plus": "2.2.18",
     "marked": "4.1.1"
   },
   "devDependencies": {
@@ -16,7 +15,9 @@
     "@nuxtjs/i18n": "8.0.0-rc.3",
     "@unocss/nuxt": "0.46.5",
     "@unocss/preset-uno": "0.46.5",
+    "naive-ui": "2.34.0",
     "nuxt": "3.0.0",
-    "unocss": "0.46.5"
+    "unocss": "0.46.5",
+    "vfonts": "0.0.3"
   }
 }

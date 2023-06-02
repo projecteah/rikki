@@ -18,22 +18,20 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div class="px-4 py-3 border-b border-[var(--el-border-color)]">
-    <textarea
+  <div class="px-4 py-3 border-b border-[var(--n-border-color)]">
+    <n-input
       :value="props.modelValue"
-      @input="emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
+      @update:value="emit('update:modelValue', $event)"
+      type="textarea"
       :placeholder="t('input.placeholder')"
-      class="w-full resize-none border-none outline-none text-sm bg-transparent"
-      rows="3"
-      @keydown.meta.enter="onSubmit"
-      @keydown.ctrl.enter="onSubmit"
+      :autosize="{ minRows: 3, maxRows: 6 }"
     />
     <div class="flex items-center justify-between mt-2">
-      <el-radio-group v-model="props.visibility" @change="emit('update:visibility', $event)">
-        <el-radio-button value="private">{{ t('visibility.private') }}</el-radio-button>
-        <el-radio-button value="public">{{ t('visibility.public') }}</el-radio-button>
-      </el-radio-group>
-      <el-button type="primary" size="small" @click="onSubmit">{{ t('input.send') }}</el-button>
+      <n-radio-group :value="props.visibility" @update:value="emit('update:visibility', $event)">
+        <n-radio-button value="private">{{ t('visibility.private') }}</n-radio-button>
+        <n-radio-button value="public">{{ t('visibility.public') }}</n-radio-button>
+      </n-radio-group>
+      <n-button type="primary" size="small" @click="onSubmit">{{ t('input.send') }}</n-button>
     </div>
   </div>
 </template>

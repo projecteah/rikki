@@ -46,43 +46,37 @@ const render = (content: string) => {
 </script>
 
 <template>
-  <div class="p-3 rounded-lg bg-[var(--el-fill-color-light)] hover:bg-[var(--el-fill-color)] transition-colors">
+  <div class="p-3 rounded bg-[var(--n-color)] hover:bg-[var(--n-color-hover)] transition-colors">
     <div v-if="editing">
-      <textarea
-        v-model="editContent"
-        class="w-full resize-none border border-[var(--el-border-color)] rounded p-2 text-sm bg-transparent"
-        rows="3"
+      <n-input
+        v-model:value="editContent"
+        type="textarea"
+        :autosize="{ minRows: 3, maxRows: 6 }"
       />
       <div class="flex justify-end gap-1 mt-2">
-        <el-button size="small" @click="cancelEdit">{{ t('action.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="saveEdit">{{ t('action.save') }}</el-button>
+        <n-button size="small" @click="cancelEdit">{{ t('action.cancel') }}</n-button>
+        <n-button size="small" type="primary" @click="saveEdit">{{ t('action.save') }}</n-button>
       </div>
     </div>
     <div v-else>
       <div class="flex items-start justify-between gap-2">
         <div class="flex-1 text-sm markdown-body" v-html="render(note.content)"></div>
         <div class="flex items-center gap-1">
-          <el-button size="small" link @click="startEdit">
-            <el-icon :size="14"><Edit /></el-icon>
-          </el-button>
-          <el-button size="small" link @click="emit('pin', note.id)">
-            <el-icon :size="14">
-              <StarFilled v-if="note.pinned" />
-              <Star v-else />
-            </el-icon>
-          </el-button>
-          <el-button size="small" link @click="emit('toggle', note.id)">
-            <el-icon :size="14">
-              <Lock v-if="note.visibility === 'private'" />
-              <View v-else />
-            </el-icon>
-          </el-button>
-          <el-button size="small" type="danger" link @click="emit('delete', note.id)">{{ t('action.delete') }}</el-button>
+          <n-button size="small" quaternary @click="startEdit">
+            <template #icon><n-icon :size="14"><Edit /></n-icon></template>
+          </n-button>
+          <n-button size="small" quaternary @click="emit('pin', note.id)">
+            <template #icon><n-icon :size="14"><StarFilled v-if="note.pinned" /><Star v-else /></n-icon></template>
+          </n-button>
+          <n-button size="small" quaternary @click="emit('toggle', note.id)">
+            <template #icon><n-icon :size="14"><Lock v-if="note.visibility === 'private'" /><Eye v-else /></n-icon></template>
+          </n-button>
+          <n-button size="small" quaternary type="error" @click="emit('delete', note.id)">{{ t('action.delete') }}</n-button>
         </div>
       </div>
-      <div class="flex items-center gap-2 mt-2 text-xs text-[var(--el-text-color-secondary)]">
+      <div class="flex items-center gap-2 mt-2 text-xs text-[var(--n-text-color-disabled)]">
         <span>{{ formatTime(note.createdAt) }}</span>
-        <span v-for="tag in note.tags" :key="tag" class="px-1.5 py-0.5 rounded bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)]">#{{ tag }}</span>
+        <n-tag v-for="tag in note.tags" :key="tag" size="small" :bordered="false">#{{ tag }}</n-tag>
       </div>
     </div>
   </div>

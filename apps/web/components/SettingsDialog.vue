@@ -36,28 +36,21 @@ const localeLabels: Record<string, string> = {
 </script>
 
 <template>
-  <el-dialog :model-value="visible" @update:model-value="emit('update:visible', $event)" :title="t('settings.title')" width="400px">
-    <el-form label-position="top">
-      <el-form-item :label="t('settings.language')">
-        <el-select v-model="locale" class="w-full">
-          <el-option
-            v-for="loc in availableLocales"
-            :key="loc"
-            :label="localeLabels[loc] || loc"
-            :value="loc"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="t('settings.apiBase')">
-        <el-input v-model="apiBase" placeholder="https://your-api.vercel.app" />
-      </el-form-item>
-      <el-form-item :label="t('settings.password')">
-        <el-input v-model="password" type="password" placeholder="your password" />
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <el-button @click="emit('update:visible', false)">{{ t('settings.cancel') }}</el-button>
-      <el-button type="primary" :loading="loading" @click="onSave">{{ t('settings.save') }}</el-button>
+  <n-modal :show="visible" @update:show="emit('update:visible', $event)" preset="dialog" :title="t('settings.title')">
+    <n-form label-placement="top">
+      <n-form-item :label="t('settings.language')">
+        <n-select v-model:value="locale" :options="availableLocales.map(l => ({ label: localeLabels[l] || l, value: l }))" />
+      </n-form-item>
+      <n-form-item :label="t('settings.apiBase')">
+        <n-input v-model:value="apiBase" placeholder="https://your-api.vercel.app" />
+      </n-form-item>
+      <n-form-item :label="t('settings.password')">
+        <n-input v-model:value="password" type="password" placeholder="your password" />
+      </n-form-item>
+    </n-form>
+    <template #action>
+      <n-button @click="emit('update:visible', false)">{{ t('settings.cancel') }}</n-button>
+      <n-button type="primary" :loading="loading" @click="onSave">{{ t('settings.save') }}</n-button>
     </template>
-  </el-dialog>
+  </n-modal>
 </template>
