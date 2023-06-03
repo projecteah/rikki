@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Note } from '../../composables/useNotes'
+import { Note } from '@/composables/useNotes'
 import NoteCard from './NoteCard.vue'
 const { t } = useI18n()
 

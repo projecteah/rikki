@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SyncConfig } from '../../composables/useSync'
+import { SyncConfig } from '@/composables/useSync'
 const { t, locale, availableLocales } = useI18n()
 
 defineProps<{

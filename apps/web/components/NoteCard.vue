@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Note } from '../../composables/useNotes'
-import { formatTime } from '../../utils'
+import { Note } from '@/composables/useNotes'
+import { formatTime } from '@/utils'
 const { t } = useI18n()
 
 const props = defineProps<{
