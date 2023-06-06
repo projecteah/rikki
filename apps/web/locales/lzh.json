@@ -30,5 +30,8 @@
   "search": {
     "placeholder": "索札記..."
   },
+  "stats": {
+    "chars": "字"
+  },
   "empty": "尚無札記"
 }

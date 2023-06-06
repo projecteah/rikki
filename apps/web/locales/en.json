@@ -35,5 +35,8 @@
   "search": {
     "placeholder": "search notes..."
   },
+  "stats": {
+    "chars": "chars"
+  },
   "empty": "no notes yet"
 }

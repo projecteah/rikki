@@ -80,7 +80,7 @@ const syncNow = async () => {
     <header class="flex items-center justify-between px-4 py-3 border-b border-[var(--n-border-color)]">
       <div class="flex items-center gap-2">
         <h1 class="text-lg font-semibold">{{ t('app.title') }}</h1>
-        <span class="text-xs text-[var(--n-text-color-disabled)]">{{ wordCount }} chars</span>
+        <span class="text-xs text-[var(--n-text-color-disabled)]">{{ wordCount }} {{ t('stats.chars') }}</span>
       </div>
       <div class="flex items-center gap-2">
         <n-button size="small" @click="dailyReview = !dailyReview">{{ t('action.dailyReview') }}</n-button>

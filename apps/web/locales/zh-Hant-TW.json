@@ -30,5 +30,8 @@
   "search": {
     "placeholder": "搜尋筆記..."
   },
+  "stats": {
+    "chars": "字"
+  },
   "empty": "還沒有筆記"
 }

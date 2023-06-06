@@ -35,5 +35,8 @@
   "search": {
     "placeholder": "搜索笔记..."
   },
+  "stats": {
+    "chars": "字"
+  },
   "empty": "还没有笔记"
 }
