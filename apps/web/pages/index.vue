@@ -4,6 +4,9 @@ const { isDark, toggleDark } = useTheme()
 const { config, login, configured, fetchNotes, pushNote } = useSync()
 const { t } = useI18n()
 const { error } = useNotify()
+const { register } = useShortcuts()
+
+import NoteInput from '@/components/NoteInput.vue'
 
 const input = ref('')
 const search = ref('')
@@ -13,6 +16,14 @@ const showSettings = ref(false)
 const syncing = ref(false)
 const saving = ref(false)
 const dailyReview = ref(false)
+
+const noteInputRef = ref<InstanceType<typeof NoteInput> | null>(null)
+const searchRef = ref<HTMLInputElement | null>(null)
+
+register('mod+n', () => noteInputRef.value?.textareaRef?.focus())
+register('mod+k', () => searchRef.value?.focus())
+register('mod+s', () => { if (configured.value) syncNow() })
+register('mod+d', () => toggleDark(!isDark.value))
 
 const dailyReviewNotes = computed(() => {
   if (!dailyReview.value) return []
@@ -91,10 +102,10 @@ const syncNow = async () => {
     </header>
 
     <div class="px-4 py-2 border-b border-[var(--n-border-color)]">
-      <n-input v-model:value="search" :placeholder="t('search.placeholder')" clearable />
+      <n-input ref="searchRef" v-model:value="search" :placeholder="t('search.placeholder')" clearable />
     </div>
 
-    <NoteInput v-model="input" v-model:visibility="visibility" @submit="submit" />
+    <NoteInput ref="noteInputRef" v-model="input" v-model:visibility="visibility" @submit="submit" />
 
     <TagFilter :tags="allTags" :active-tag="activeTag" @select="activeTag = $event" />
 

@@ -12,6 +12,10 @@ const emit = defineEmits<{
   submit: []
 }>()
 
+const textareaRef = ref<HTMLTextAreaElement | null>(null)
+
+defineExpose({ textareaRef })
+
 const onSubmit = () => {
   emit('submit')
 }
@@ -20,6 +24,7 @@ const onSubmit = () => {
 <template>
   <div class="px-4 py-3 border-b border-[var(--n-border-color)]">
     <n-input
+      ref="textareaRef"
       :value="props.modelValue"
       @update:value="emit('update:modelValue', $event)"
       type="textarea"
