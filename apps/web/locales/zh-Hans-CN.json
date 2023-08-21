@@ -38,5 +38,13 @@
   "stats": {
     "chars": "字"
   },
+  "shortcuts": {
+    "title": "键盘快捷键",
+    "newNote": "新建笔记",
+    "search": "搜索",
+    "sync": "同步",
+    "darkMode": "切换深色模式",
+    "showHelp": "显示帮助"
+  },
   "empty": "还没有笔记"
 }

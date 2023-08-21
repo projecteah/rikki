@@ -7,6 +7,7 @@ const { error } = useNotify()
 const { register } = useShortcuts()
 
 import NoteInput from '@/components/NoteInput.vue'
+import ShortcutsModal from '@/components/ShortcutsModal.vue'
 
 const input = ref('')
 const search = ref('')
@@ -16,6 +17,7 @@ const showSettings = ref(false)
 const syncing = ref(false)
 const saving = ref(false)
 const dailyReview = ref(false)
+const showShortcuts = ref(false)
 
 const noteInputRef = ref<InstanceType<typeof NoteInput> | null>(null)
 const searchRef = ref<HTMLInputElement | null>(null)
@@ -24,6 +26,7 @@ register('mod+n', () => noteInputRef.value?.textareaRef?.focus())
 register('mod+k', () => searchRef.value?.focus())
 register('mod+s', () => { if (configured.value) syncNow() })
 register('mod+d', () => toggleDark(!isDark.value))
+register('mod+/', () => showShortcuts.value = true)
 
 const dailyReviewNotes = computed(() => {
   if (!dailyReview.value) return []
@@ -126,5 +129,7 @@ const syncNow = async () => {
       :loading="saving"
       @save="saveSettings"
     />
+
+    <ShortcutsModal v-model:visible="showShortcuts" />
   </div>
 </template>

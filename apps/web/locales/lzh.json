@@ -33,5 +33,13 @@
   "stats": {
     "chars": "字"
   },
+  "shortcuts": {
+    "title": "鍵盤捷徑",
+    "newNote": "新建札記",
+    "search": "索",
+    "sync": "同步",
+    "darkMode": "切換暗色",
+    "showHelp": "示此助"
+  },
   "empty": "尚無札記"
 }

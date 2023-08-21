@@ -38,5 +38,13 @@
   "stats": {
     "chars": "chars"
   },
+  "shortcuts": {
+    "title": "keyboard shortcuts",
+    "newNote": "new note",
+    "search": "search",
+    "sync": "sync",
+    "darkMode": "toggle dark mode",
+    "showHelp": "show this help"
+  },
   "empty": "no notes yet"
 }

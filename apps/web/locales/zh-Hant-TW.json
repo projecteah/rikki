@@ -33,5 +33,13 @@
   "stats": {
     "chars": "字"
   },
+  "shortcuts": {
+    "title": "鍵盤快捷鍵",
+    "newNote": "新建筆記",
+    "search": "搜尋",
+    "sync": "同步",
+    "darkMode": "切換深色模式",
+    "showHelp": "顯示幫助"
+  },
   "empty": "還沒有筆記"
 }
