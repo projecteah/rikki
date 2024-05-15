@@ -6,6 +6,14 @@ app.get('/api/health', (c) => {
   return c.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
 
+app.post('/api/login', async (c) => {
+  const { password } = await c.req.json()
+  if (password === process.env.RIKKI_PASSWORD) {
+    return c.json({ token: password })
+  }
+  return c.json({ error: 'wrong password' }, 401)
+})
+
 app.get('/api/notes', async (c) => {
   return c.json([])
 })
