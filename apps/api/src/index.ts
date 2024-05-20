@@ -18,6 +18,16 @@ app.get('/api/health', (c) => {
   return c.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
 
+app.get('/api/public/notes', async (c) => {
+  const database = await getDb()
+  const notes = await database.collection('notes')
+    .find({ visibility: 'public' })
+    .sort({ createdAt: -1 })
+    .project({ _id: 0 })
+    .toArray()
+  return c.json(notes)
+})
+
 app.post('/api/login', async (c) => {
   const { password } = await c.req.json()
   if (password === process.env.RIKKI_PASSWORD) {
