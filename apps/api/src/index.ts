@@ -62,10 +62,4 @@ app.delete('/api/notes/:id', async (c) => {
   return c.json({ success: true })
 })
 
-const PORT = process.env.PORT || 3001
-
-app.listen(PORT, () => {
-  console.log(`api running on http://localhost:${PORT}`)
-})
-
 export default app

@@ -1,0 +1,6 @@
+name = "rikki-api"
+compatibility_date = "2024-06-01"
+main = "src/index.ts"
+
+[vars]
+RIKKI_PASSWORD = "admin"
