@@ -32,6 +32,7 @@ const localeLabels: Record<string, string> = {
   'zh-Hans-CN': '简体中文',
   'zh-Hant-TW': '正體中文',
   lzh: '文言',
+  yue: '繁體廣東話',
 }
 </script>
 
