@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  future: {
+    compatibilityVersion: 4,
+  },
   modules: [
     '@unocss/nuxt',
     '@nuxtjs/color-mode',
@@ -6,8 +9,5 @@ export default defineNuxtConfig({
   ],
   colorMode: {
     classSuffix: '',
-  },
-  alias: {
-    '@': '.',
   },
 })
