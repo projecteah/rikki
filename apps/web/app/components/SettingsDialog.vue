@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { SyncConfig } from '@/composables/useSync'
+
 const { t, locale, availableLocales } = useI18n()
 
-defineProps<{
+const props = defineProps<{
   visible: boolean
   config: SyncConfig
   loading?: boolean

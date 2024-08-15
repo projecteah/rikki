@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { Note } from '@/composables/useNotes'
-import { formatTime } from '@/utils'
 import { useLinkPreview } from '@/composables/useLinkPreview'
-import LinkPreview from './LinkPreview.vue'
+
 const { t } = useI18n()
 
 const props = defineProps<{
@@ -20,7 +19,7 @@ const editing = ref(false)
 const editContent = ref('')
 
 const { extractUrl } = useLinkPreview()
-const noteUrl = computed(() => extractUrl(note.content))
+const noteUrl = computed(() => extractUrl(props.note.content))
 
 const startEdit = () => {
   editContent.value = props.note.content

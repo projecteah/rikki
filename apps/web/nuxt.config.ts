@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  ssr: false,
+  // ssr: false,
   telemetry: false,
   modules: [
     '@unocss/nuxt',

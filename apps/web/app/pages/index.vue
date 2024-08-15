@@ -6,9 +6,6 @@ const { t } = useI18n()
 const { error } = useNotify()
 const { register } = useShortcuts()
 
-import NoteInput from '@/components/NoteInput.vue'
-import ShortcutsModal from '@/components/ShortcutsModal.vue'
-
 const input = ref('')
 const search = ref('')
 const visibility = ref<'public' | 'private'>('private')

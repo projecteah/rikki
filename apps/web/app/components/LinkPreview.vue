@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useLinkPreview } from '@/composables/useLinkPreview'
-
 const props = defineProps<{
   url: string
 }>()
