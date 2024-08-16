@@ -1,3 +1,5 @@
+import { useLocalStorage } from '@vueuse/core'
+
 export interface Note {
   id: string
   content: string
@@ -8,11 +10,7 @@ export interface Note {
 }
 
 export function useNotes() {
-  const notes = ref<Note[]>(JSON.parse(localStorage.getItem('notes') || '[]'))
-
-  watch(notes, (val) => {
-    localStorage.setItem('notes', JSON.stringify(val))
-  }, { deep: true })
+  const notes = useLocalStorage<Note[]>('notes', [])
 
   const addNote = (content: string, visibility: 'public' | 'private' = 'private') => {
     const tags = extractTags(content)

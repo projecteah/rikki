@@ -1,16 +1,16 @@
 import * as api from '@/api'
+import { useLocalStorage } from '@vueuse/core'
 
 export interface SyncConfig {
   apiBase: string
   token: string
 }
 
-const config = ref<SyncConfig>(JSON.parse(localStorage.getItem('rikki-sync') || '{}'))
+const config = useLocalStorage<SyncConfig>('rikki-sync', { apiBase: '', token: '' })
 
 export function useSync() {
   const saveConfig = (apiBase: string, token: string) => {
     config.value = { apiBase, token }
-    localStorage.setItem('rikki-sync', JSON.stringify(config.value))
   }
 
   const fetchNotes = () => api.getNotes(config.value.apiBase, config.value.token)
