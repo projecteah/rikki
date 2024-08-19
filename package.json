@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "pnpm --filter @rikki/web dev",
     "dev:api": "pnpm --filter @rikki/api dev",
+    "dev:docs": "pnpm --filter @rikki/docs dev",
     "build": "pnpm --filter @rikki/web build"
   },
   "devDependencies": {
