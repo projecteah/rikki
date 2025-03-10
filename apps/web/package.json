@@ -5,6 +5,7 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "preview": "nuxi preview",
+    "tauri": "tauri dev",
     "postinstall": "nuxi prepare"
   },
   "dependencies": {
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@nuxtjs/color-mode": "3.4.0",
     "@nuxtjs/i18n": "8.1.0",
+    "@tauri-apps/cli": "2.1.0",
     "@unocss/nuxt": "0.62.0",
     "@unocss/preset-uno": "0.62.0",
     "naive-ui": "2.38.2",
