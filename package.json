@@ -6,9 +6,15 @@
     "dev": "pnpm --filter @rikki/web dev",
     "dev:api": "pnpm --filter @rikki/api dev",
     "dev:docs": "pnpm --filter @rikki/docs dev",
-    "build": "pnpm --filter @rikki/web build"
+    "build": "pnpm --filter @rikki/web build",
+    "lint": "oxlint",
+		"lint:fix": "oxlint --fix",
+		"fmt": "oxfmt",
+		"fmt:check": "oxfmt --check"
   },
   "devDependencies": {
+    "oxfmt": "0.35.0",
+    "oxlint": "1.50.0",
     "typescript": "4.9.3",
     "vite": "3.2.3"
   }

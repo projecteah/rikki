@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"ignorePatterns": ["*.d.ts"],
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"sortTailwindcss": {
+		"stylesheet": "./app/assets/css/main.css",
+		"functions": ["clsx", "cn"],
+		"preserveWhitespace": true
+	}
+}
