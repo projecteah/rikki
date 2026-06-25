@@ -13,8 +13,8 @@
 		"fmt:check": "oxfmt --check"
   },
   "devDependencies": {
-    "oxfmt": "0.35.0",
-    "oxlint": "1.50.0",
+    "oxfmt": "^0.56.0",
+		"oxlint": "^1.71.0",
     "typescript": "4.9.3",
     "vite": "3.2.3"
   }

@@ -1,12 +1,4 @@
-import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-
 export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4,
-  },
-  ssr: false,
-  telemetry: false,
   modules: [
     '@unocss/nuxt',
     '@nuxtjs/color-mode',
@@ -15,11 +7,22 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
-  vite: {
-    plugins: [
-      Components({
-        resolvers: [NaiveUiResolver()],
-      }),
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US' },
+      { code: 'zh-cn', language: 'zh-CN' },
+      { code: 'zh-tw', language: 'zh-TW' },
+      { code: 'yue', language: 'yue' },
     ],
+    defaultLocale: 'en',
   },
+  ssr: false,
+  vite: {
+    clearScreen: false,
+    envPrefix: ['VITE_', 'TAURI_'],
+  },
+  devtools: {
+    enabled: false,
+  },
+  compatibilityDate: '2026-04-01',
 })

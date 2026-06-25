@@ -9,20 +9,24 @@
     "postinstall": "nuxi prepare"
   },
   "dependencies": {
-    "@vueuse/core": "10.11.0",
-    "marked": "4.1.1"
+    "@nuxt/ui": "^4.9.0",
+    "@tauri-apps/api": "^2.11.1",
+		"@tauri-apps/plugin-opener": "^2.5.4",
+    "marked": "4.1.1",
+    "vue": "^3.5.39",
+		"vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@nuxtjs/color-mode": "3.4.0",
-    "@nuxtjs/i18n": "8.1.0",
-    "@tauri-apps/cli": "2.1.0",
+    "@nuxtjs/color-mode": "3.5.0",
+    "@nuxtjs/i18n": "^10.4.0",
+    "@tauri-apps/cli": "^2.11.3",
+    "@vueuse/core": "^14.3.0",
+		"@vueuse/nuxt": "^14.3.0",
     "@unocss/nuxt": "0.62.0",
     "@unocss/preset-uno": "0.62.0",
     "naive-ui": "2.38.2",
     "unplugin-vue-components": "0.27.0",
-    "nuxt": "3.12.4",
-    "vue-i18n": "9.14.0",
-    "unocss": "0.62.0",
-    "vfonts": "0.0.3"
+    "nuxt": "^4.4.8",
+    "unocss": "0.62.0"
   }
 }
