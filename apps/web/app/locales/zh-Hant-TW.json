@@ -1,45 +1,45 @@
 {
-  "app": { "title": "Rikki" },
-  "input": { "placeholder": "此刻在想什麼...", "send": "傳送" },
-  "settings": {
-    "title": "同步設定",
-    "language": "語言",
-    "apiBase": "介面位址",
-    "password": "密碼",
-    "cancel": "取消",
-    "save": "儲存",
-    "loginFailed": "登入失敗",
-    "syncFailed": "同步失敗"
-  },
-  "action": {
-    "sync": "同步",
-    "delete": "刪除",
-    "settings": "設定",
-    "edit": "編輯",
-    "cancel": "取消",
-    "save": "儲存",
-    "dailyReview": "每日回顧"
-  },
-  "dailyReview": {
-    "title": "過去的今天..."
-  },
-  "visibility": {
-    "private": "私有",
-    "public": "公開"
-  },
-  "search": {
-    "placeholder": "搜尋筆記..."
-  },
-  "stats": {
-    "chars": "字"
-  },
-  "shortcuts": {
-    "title": "鍵盤快捷鍵",
-    "newNote": "新建筆記",
-    "search": "搜尋",
-    "sync": "同步",
-    "darkMode": "切換深色模式",
-    "showHelp": "顯示幫助"
-  },
-  "empty": "還沒有筆記"
+	"app": { "title": "Rikki" },
+	"input": { "placeholder": "此刻在想什麼...", "send": "傳送" },
+	"settings": {
+		"title": "同步設定",
+		"language": "語言",
+		"apiBase": "介面位址",
+		"password": "密碼",
+		"cancel": "取消",
+		"save": "儲存",
+		"loginFailed": "登入失敗",
+		"syncFailed": "同步失敗"
+	},
+	"action": {
+		"sync": "同步",
+		"delete": "刪除",
+		"settings": "設定",
+		"edit": "編輯",
+		"cancel": "取消",
+		"save": "儲存",
+		"dailyReview": "每日回顧"
+	},
+	"dailyReview": {
+		"title": "過去的今天..."
+	},
+	"visibility": {
+		"private": "私有",
+		"public": "公開"
+	},
+	"search": {
+		"placeholder": "搜尋筆記..."
+	},
+	"stats": {
+		"chars": "字"
+	},
+	"shortcuts": {
+		"title": "鍵盤快捷鍵",
+		"newNote": "新建筆記",
+		"search": "搜尋",
+		"sync": "同步",
+		"darkMode": "切換深色模式",
+		"showHelp": "顯示幫助"
+	},
+	"empty": "還沒有筆記"
 }

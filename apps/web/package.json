@@ -1,32 +1,26 @@
 {
-  "name": "@rikki/web",
-  "version": "0.3.0",
-  "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "preview": "nuxi preview",
-    "tauri": "tauri dev",
-    "postinstall": "nuxi prepare"
-  },
-  "dependencies": {
-    "@nuxt/ui": "^4.9.0",
-    "@tauri-apps/api": "^2.11.1",
+	"name": "@rikki/web",
+	"version": "0.3.0",
+	"scripts": {
+		"dev": "nuxi dev",
+		"build": "nuxi build",
+		"preview": "nuxi preview",
+		"tauri": "tauri",
+		"postinstall": "nuxi prepare"
+	},
+	"dependencies": {
+		"@nuxt/ui": "^4.10.0",
+		"@tauri-apps/api": "^2.11.1",
 		"@tauri-apps/plugin-opener": "^2.5.4",
-    "marked": "4.1.1",
-    "vue": "^3.5.39",
-		"vue-router": "^5.1.0"
-  },
-  "devDependencies": {
-    "@nuxtjs/color-mode": "3.5.0",
-    "@nuxtjs/i18n": "^10.4.0",
-    "@tauri-apps/cli": "^2.11.3",
-    "@vueuse/core": "^14.3.0",
-		"@vueuse/nuxt": "^14.3.0",
-    "@unocss/nuxt": "0.62.0",
-    "@unocss/preset-uno": "0.62.0",
-    "naive-ui": "2.38.2",
-    "unplugin-vue-components": "0.27.0",
-    "nuxt": "^4.4.8",
-    "unocss": "0.62.0"
-  }
+		"marked": "18.0.7",
+		"vue": "^3.5.40",
+		"vue-router": "^5.2.0"
+	},
+	"devDependencies": {
+		"@nuxtjs/i18n": "^10.6.0",
+		"@tauri-apps/cli": "^2.11.4",
+		"@vueuse/core": "^14.4.0",
+		"@vueuse/nuxt": "^14.4.0",
+		"nuxt": "^4.5.1"
+	}
 }

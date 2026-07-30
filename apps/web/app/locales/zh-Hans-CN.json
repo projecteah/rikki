@@ -1,50 +1,50 @@
 {
-  "app": {
-    "title": "Rikki"
-  },
-  "input": {
-    "placeholder": "此刻在想什么...",
-    "send": "发送"
-  },
-  "settings": {
-    "title": "同步设置",
-    "language": "语言",
-    "apiBase": "接口地址",
-    "password": "密码",
-    "cancel": "取消",
-    "save": "保存",
-    "loginFailed": "登录失败",
-    "syncFailed": "同步失败"
-  },
-  "action": {
-    "sync": "同步",
-    "delete": "删除",
-    "settings": "设置",
-    "edit": "编辑",
-    "cancel": "取消",
-    "save": "保存",
-    "dailyReview": "每日回顾"
-  },
-  "dailyReview": {
-    "title": "过去的今天..."
-  },
-  "visibility": {
-    "private": "私有",
-    "public": "公开"
-  },
-  "search": {
-    "placeholder": "搜索笔记..."
-  },
-  "stats": {
-    "chars": "字"
-  },
-  "shortcuts": {
-    "title": "键盘快捷键",
-    "newNote": "新建笔记",
-    "search": "搜索",
-    "sync": "同步",
-    "darkMode": "切换深色模式",
-    "showHelp": "显示帮助"
-  },
-  "empty": "还没有笔记"
+	"app": {
+		"title": "Rikki"
+	},
+	"input": {
+		"placeholder": "此刻在想什么...",
+		"send": "发送"
+	},
+	"settings": {
+		"title": "同步设置",
+		"language": "语言",
+		"apiBase": "接口地址",
+		"password": "密码",
+		"cancel": "取消",
+		"save": "保存",
+		"loginFailed": "登录失败",
+		"syncFailed": "同步失败"
+	},
+	"action": {
+		"sync": "同步",
+		"delete": "删除",
+		"settings": "设置",
+		"edit": "编辑",
+		"cancel": "取消",
+		"save": "保存",
+		"dailyReview": "每日回顾"
+	},
+	"dailyReview": {
+		"title": "过去的今天..."
+	},
+	"visibility": {
+		"private": "私有",
+		"public": "公开"
+	},
+	"search": {
+		"placeholder": "搜索笔记..."
+	},
+	"stats": {
+		"chars": "字"
+	},
+	"shortcuts": {
+		"title": "键盘快捷键",
+		"newNote": "新建笔记",
+		"search": "搜索",
+		"sync": "同步",
+		"darkMode": "切换深色模式",
+		"showHelp": "显示帮助"
+	},
+	"empty": "还没有笔记"
 }

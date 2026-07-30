@@ -1,45 +1,45 @@
 {
-  "app": { "title": "李記" },
-  "input": { "placeholder": "心中所思何也...", "send": "發" },
-  "settings": {
-    "title": "同步之設",
-    "language": "語",
-    "apiBase": "介面之位",
-    "password": "密語",
-    "cancel": "罷",
-    "save": "存",
-    "loginFailed": "登入未果",
-    "syncFailed": "同步未果"
-  },
-  "action": {
-    "sync": "同步",
-    "delete": "刪",
-    "settings": "設",
-    "edit": "改",
-    "cancel": "罷",
-    "save": "存",
-    "dailyReview": "每日回顧"
-  },
-  "dailyReview": {
-    "title": "昔日今日..."
-  },
-  "visibility": {
-    "private": "密",
-    "public": "公"
-  },
-  "search": {
-    "placeholder": "索札記..."
-  },
-  "stats": {
-    "chars": "字"
-  },
-  "shortcuts": {
-    "title": "鍵盤捷徑",
-    "newNote": "新建札記",
-    "search": "索",
-    "sync": "同步",
-    "darkMode": "切換暗色",
-    "showHelp": "示此助"
-  },
-  "empty": "尚無札記"
+	"app": { "title": "李記" },
+	"input": { "placeholder": "心中所思何也...", "send": "發" },
+	"settings": {
+		"title": "同步之設",
+		"language": "語",
+		"apiBase": "介面之位",
+		"password": "密語",
+		"cancel": "罷",
+		"save": "存",
+		"loginFailed": "登入未果",
+		"syncFailed": "同步未果"
+	},
+	"action": {
+		"sync": "同步",
+		"delete": "刪",
+		"settings": "設",
+		"edit": "改",
+		"cancel": "罷",
+		"save": "存",
+		"dailyReview": "每日回顧"
+	},
+	"dailyReview": {
+		"title": "昔日今日..."
+	},
+	"visibility": {
+		"private": "密",
+		"public": "公"
+	},
+	"search": {
+		"placeholder": "索札記..."
+	},
+	"stats": {
+		"chars": "字"
+	},
+	"shortcuts": {
+		"title": "鍵盤捷徑",
+		"newNote": "新建札記",
+		"search": "索",
+		"sync": "同步",
+		"darkMode": "切換暗色",
+		"showHelp": "示此助"
+	},
+	"empty": "尚無札記"
 }

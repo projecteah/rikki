@@ -1,50 +1,50 @@
 {
-  "app": {
-    "title": "Rikki"
-  },
-  "input": {
-    "placeholder": "what's on your mind...",
-    "send": "send"
-  },
-  "settings": {
-    "title": "sync settings",
-    "language": "language",
-    "apiBase": "api base url",
-    "password": "password",
-    "cancel": "cancel",
-    "save": "save",
-    "loginFailed": "login failed",
-    "syncFailed": "sync failed"
-  },
-  "action": {
-    "sync": "sync",
-    "delete": "delete",
-    "settings": "settings",
-    "edit": "edit",
-    "cancel": "cancel",
-    "save": "save",
-    "dailyReview": "daily review"
-  },
-  "dailyReview": {
-    "title": "on this day in the past..."
-  },
-  "visibility": {
-    "private": "private",
-    "public": "public"
-  },
-  "search": {
-    "placeholder": "search notes..."
-  },
-  "stats": {
-    "chars": "chars"
-  },
-  "shortcuts": {
-    "title": "keyboard shortcuts",
-    "newNote": "new note",
-    "search": "search",
-    "sync": "sync",
-    "darkMode": "toggle dark mode",
-    "showHelp": "show this help"
-  },
-  "empty": "no notes yet"
+	"app": {
+		"title": "Rikki"
+	},
+	"input": {
+		"placeholder": "what's on your mind...",
+		"send": "send"
+	},
+	"settings": {
+		"title": "sync settings",
+		"language": "language",
+		"apiBase": "api base url",
+		"password": "password",
+		"cancel": "cancel",
+		"save": "save",
+		"loginFailed": "login failed",
+		"syncFailed": "sync failed"
+	},
+	"action": {
+		"sync": "sync",
+		"delete": "delete",
+		"settings": "settings",
+		"edit": "edit",
+		"cancel": "cancel",
+		"save": "save",
+		"dailyReview": "daily review"
+	},
+	"dailyReview": {
+		"title": "on this day in the past..."
+	},
+	"visibility": {
+		"private": "private",
+		"public": "public"
+	},
+	"search": {
+		"placeholder": "search notes..."
+	},
+	"stats": {
+		"chars": "chars"
+	},
+	"shortcuts": {
+		"title": "keyboard shortcuts",
+		"newNote": "new note",
+		"search": "search",
+		"sync": "sync",
+		"darkMode": "toggle dark mode",
+		"showHelp": "show this help"
+	},
+	"empty": "no notes yet"
 }

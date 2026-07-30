@@ -1,13 +1,13 @@
 {
-  "name": "@rikki/docs",
-  "version": "0.3.0",
-  "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
-  },
-  "devDependencies": {
-    "vitepress": "1.0.0-alpha.29",
-    "vue": "3.2.40"
-  }
+	"name": "@rikki/docs",
+	"version": "0.3.0",
+	"scripts": {
+		"dev": "vitepress dev docs",
+		"build": "vitepress build docs",
+		"preview": "vitepress preview docs"
+	},
+	"devDependencies": {
+		"vitepress": "1.0.0-alpha.29",
+		"vue": "3.2.40"
+	}
 }
