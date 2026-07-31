@@ -10,13 +10,18 @@
 	},
 	"dependencies": {
 		"@nuxt/ui": "^4.10.0",
+		"@pinia/nuxt": "^1.0.1",
 		"@tauri-apps/api": "^2.11.1",
 		"@tauri-apps/plugin-opener": "^2.5.4",
+		"@tauri-store/pinia": "^5.0.2",
 		"marked": "18.0.7",
+		"pinia": "^4.0.2",
+		"pinia-plugin-persistedstate": "^4.7.1",
 		"vue": "^3.5.40",
 		"vue-router": "^5.2.0"
 	},
 	"devDependencies": {
+		"@iconify-json/ph": "^1.2.2",
 		"@nuxtjs/i18n": "^10.6.0",
 		"@tauri-apps/cli": "^2.11.4",
 		"@vueuse/core": "^14.4.0",
