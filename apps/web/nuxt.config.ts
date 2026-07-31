@@ -10,6 +10,11 @@ export default defineNuxtConfig({
 		defaultLocale: 'en',
 	},
 	css: ['@/assets/css/main.css'],
+	icon: {
+		clientBundle: {
+			scan: true,
+		},
+	},
 	ssr: false,
 	vite: {
 		clearScreen: false,

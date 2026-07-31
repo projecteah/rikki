@@ -6,7 +6,7 @@
 	"singleQuote": true,
 	"jsxSingleQuote": true,
 	"sortTailwindcss": {
-		"stylesheet": "./app/assets/css/main.css",
+		"stylesheet": "./apps/web/app/assets/css/main.css",
 		"functions": ["clsx", "cn"],
 		"preserveWhitespace": true
 	}
