@@ -1,8 +1,5 @@
 export default defineNuxtConfig({
-	modules: ['@nuxt/ui', '@nuxtjs/i18n'],
-	colorMode: {
-		classSuffix: '',
-	},
+	modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt'],
 	i18n: {
 		locales: [
 			{ code: 'en', language: 'en-US' },
@@ -12,6 +9,7 @@ export default defineNuxtConfig({
 		],
 		defaultLocale: 'en',
 	},
+	css: ['@/assets/css/main.css'],
 	ssr: false,
 	vite: {
 		clearScreen: false,
@@ -27,6 +25,12 @@ export default defineNuxtConfig({
 				ignored: ['**/src-tauri/**'],
 			},
 		},
+	},
+	devServer: {
+		port: 1420,
+	},
+	ui: {
+		fonts: false,
 	},
 	devtools: {
 		enabled: false,
