@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-	modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt'],
+	modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@pinia/nuxt'],
 	i18n: {
 		locales: [
 			{ code: 'en', language: 'en-US' },

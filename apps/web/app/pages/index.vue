@@ -2,7 +2,7 @@
 
 <template>
 	<div class="flex flex-1">
-		<LayoutSidebar />
+		<NoteSidebar />
 		<UButton label="test" />
 	</div>
 </template>

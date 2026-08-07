@@ -82,6 +82,16 @@ export default defineAppConfig({
 					'absolute top-(--ui-header-height) bottom-0 h-[calc(100%-var(--ui-header-height))]',
 			},
 		},
+		calendar: {
+			variants: {
+				color: {
+					primary: {
+						headCell: 'text-muted',
+						cellTrigger: 'outline-primary/25',
+					},
+				},
+			},
+		},
 		icons: {
 			arrowDown: 'ph:arrow-down',
 			arrowLeft: 'ph:arrow-left',
