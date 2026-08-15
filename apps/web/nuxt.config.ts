@@ -1,15 +1,13 @@
+import { defaultLocale, locales } from './i18n/locales'
+
 export default defineNuxtConfig({
 	modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@pinia/nuxt'],
+	css: ['~/assets/css/main.css'],
 	i18n: {
-		locales: [
-			{ code: 'en', language: 'en-US' },
-			{ code: 'zh-cn', language: 'zh-CN' },
-			{ code: 'zh-tw', language: 'zh-TW' },
-			{ code: 'yue', language: 'yue' },
-		],
-		defaultLocale: 'en',
+		strategy: 'no_prefix',
+		defaultLocale,
+		locales,
 	},
-	css: ['@/assets/css/main.css'],
 	icon: {
 		clientBundle: {
 			scan: true,
@@ -31,14 +29,14 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	devServer: {
-		port: 1420,
-	},
 	ui: {
 		fonts: false,
 	},
 	devtools: {
 		enabled: false,
+	},
+	devServer: {
+		port: 1420,
 	},
 	compatibilityDate: '2026-07-30',
 })

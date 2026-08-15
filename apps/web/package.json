@@ -2,11 +2,11 @@
 	"name": "@rikki/web",
 	"version": "0.3.0",
 	"scripts": {
-		"dev": "nuxi dev",
-		"build": "nuxi build",
-		"preview": "nuxi preview",
+		"dev": "nuxt dev",
+		"build": "nuxt build",
+		"preview": "nuxt preview",
 		"tauri": "tauri",
-		"postinstall": "nuxi prepare"
+		"postinstall": "nuxt prepare"
 	},
 	"dependencies": {
 		"@nuxt/ui": "^4.10.0",

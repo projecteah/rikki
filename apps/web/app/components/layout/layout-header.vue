@@ -51,7 +51,7 @@ async function handleWindowDrag(event: MouseEvent) {
 					<UButton :icon="appConfig.ui.icons.arrowLeft" to="/" color="neutral" variant="ghost" />
 				</UTooltip>
 				<UDropdownMenu :items="dropdownItems">
-					<UTooltip :text="$t('header.open-app-menu')">
+					<UTooltip :text="$t('header.openAppMenu')">
 						<UButton :icon="appConfig.ui.icons.menu" color="neutral" variant="ghost" />
 					</UTooltip>
 				</UDropdownMenu>

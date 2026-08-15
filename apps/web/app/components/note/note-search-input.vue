@@ -7,6 +7,6 @@ const appConfig = useAppConfig()
 		:icon="appConfig.ui.icons.search"
 		color="neutral"
 		variant="soft"
-		placeholder="Search..."
+		:placeholder="$t('common.searchPlaceholder')"
 	/>
 </template>

@@ -1,0 +1,26 @@
+{
+	"common": {
+		"searchPlaceholder": "Search..."
+	},
+	"header": {
+		"backToApp": "Back to App",
+		"openAppMenu": "Open App Menu"
+	},
+	"settings": {
+		"label": "Settings",
+		"general": {
+			"label": "General",
+			"language": "Language",
+			"searchLanguagesPlaceholder": "Search languages..."
+		},
+		"appearance": {
+			"label": "Appearance",
+			"colorMode": {
+				"label": "Color Mode",
+				"light": "Light",
+				"dark": "Dark",
+				"system": "System"
+			}
+		}
+	}
+}

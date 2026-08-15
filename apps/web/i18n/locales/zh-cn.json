@@ -1,0 +1,26 @@
+{
+	"common": {
+		"searchPlaceholder": "搜索…"
+	},
+	"header": {
+		"backToApp": "返回应用",
+		"openAppMenu": "打开应用菜单"
+	},
+	"settings": {
+		"label": "设置",
+		"general": {
+			"label": "通用",
+			"language": "语言",
+			"searchLanguagesPlaceholder": "搜索语言…"
+		},
+		"appearance": {
+			"label": "外观",
+			"colorMode": {
+				"label": "主题色",
+				"light": "浅色",
+				"dark": "深色",
+				"system": "跟随系统"
+			}
+		}
+	}
+}
