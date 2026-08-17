@@ -3,7 +3,10 @@ export default defineAppConfig({
 		name: 'Rikki',
 	},
 	routes: {
-		settings: '/settings',
+		settings: {
+			general: '/settings/general',
+			appearance: '/settings/appearance',
+		},
 	},
 	ui: {
 		colors: {

@@ -47,7 +47,7 @@ async function handleWindowDrag(event: MouseEvent) {
 	>
 		<section class="flex h-full items-center gap-2">
 			<div class="flex items-center">
-				<UTooltip v-if="$route.path !== '/'" :text="$t('header.back')">
+				<UTooltip v-if="$route.path !== '/'" :text="$t('header.backToApp')">
 					<UButton :icon="appConfig.ui.icons.arrowLeft" to="/" color="neutral" variant="ghost" />
 				</UTooltip>
 				<UDropdownMenu :items="dropdownItems">

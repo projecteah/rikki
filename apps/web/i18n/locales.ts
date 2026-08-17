@@ -10,29 +10,29 @@ export const locales: LocaleObject[] = [
 		name: 'English',
 	},
 	{
-		code: 'zh-Hans-CN',
+		code: 'zh-Hans',
 		file: 'zh-cn.json',
 		language: 'zh-Hans-CN',
 		name: '简体中文',
 	},
 	{
-		code: 'zh-Hant-TW',
+		code: 'zh-Hant',
 		file: 'zh-tw.json',
 		language: 'zh-Hant-TW',
 		name: '正體中文',
 	},
 	{
-		code: 'yue-Hant',
+		code: 'yue',
 		file: 'yue.json',
 		language: 'yue-Hant',
 		name: '廣東話',
 	},
-	{
-		code: 'lzh',
-		file: 'lzh.json',
-		language: 'lzh',
-		name: '文言',
-	},
+	// {
+	// 	code: 'lzh',
+	// 	file: 'lzh.json',
+	// 	language: 'lzh',
+	// 	name: '文言',
+	// },
 ]
 
 export const availableLocales = [...locales].sort((a, b) => a.code.localeCompare(b.code))
