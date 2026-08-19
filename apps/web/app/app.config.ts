@@ -80,9 +80,10 @@ export default defineAppConfig({
 		},
 		sidebar: {
 			slots: {
-				gap: 'h-[calc(100%-var(--ui-header-height))]',
-				container:
-					'absolute top-(--ui-header-height) bottom-0 h-[calc(100%-var(--ui-header-height))]',
+				root: '[--sidebar-width-icon:3rem]',
+				body: 'p-2 gap-2',
+				header: 'px-2',
+				title: 'text-sm font-normal',
 			},
 		},
 		calendar: {

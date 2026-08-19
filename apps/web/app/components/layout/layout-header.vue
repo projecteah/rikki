@@ -50,11 +50,7 @@ async function handleWindowDrag(event: MouseEvent) {
 				<UTooltip v-if="$route.path !== '/'" :text="$t('header.backToApp')">
 					<UButton :icon="appConfig.ui.icons.arrowLeft" to="/" color="neutral" variant="ghost" />
 				</UTooltip>
-				<UDropdownMenu :items="dropdownItems">
-					<UTooltip :text="$t('header.openAppMenu')">
-						<UButton :icon="appConfig.ui.icons.menu" color="neutral" variant="ghost" />
-					</UTooltip>
-				</UDropdownMenu>
+				<LayoutDropdownMenu />
 			</div>
 			<span class="text-sm">{{ appConfig.app.name }}</span>
 		</section>

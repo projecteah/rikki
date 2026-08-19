@@ -1,5 +1,39 @@
+<script setup lang="ts">
+const appConfig = useAppConfig()
+
+withDefaults(
+	defineProps<{
+		collapsible?: 'offcanvas' | 'icon' | 'none'
+	}>(),
+	{
+		collapsible: 'offcanvas',
+	},
+)
+</script>
+
 <template>
-	<USidebar rail collapsible="offcanvas">
+	<USidebar rail :collapsible="collapsible">
+		<template #title v-if="!isTauri">
+			<UButton
+				v-if="$route.path !== '/'"
+				:label="$t('header.backToApp')"
+				:icon="appConfig.ui.icons.arrowLeft"
+				to="/"
+				color="neutral"
+				variant="ghost"
+				class="w-full px-1.5"
+				:ui="{
+					label: 'text-toned',
+				}"
+			/>
+			<div v-else class="flex items-center justify-between">
+				<div class="flex items-center gap-2">
+					<LayoutDropdownMenu />
+					<span class="text-sm">{{ appConfig.app.name }}</span>
+				</div>
+				<UDashboardSearchButton collapsed />
+			</div>
+		</template>
 		<slot />
 	</USidebar>
 </template>
