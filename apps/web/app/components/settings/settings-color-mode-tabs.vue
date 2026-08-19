@@ -1,24 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
-	modelValue: 'light' | 'dark' | 'system'
-}>()
-
-const emit = defineEmits<{
-	'update:modelValue': [value: 'light' | 'dark' | 'system']
-}>()
+const model = defineModel<'light' | 'dark' | 'system'>()
 
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
 
-const tabValue = computed({
-	get() {
-		return props.modelValue
-	},
-	set(val) {
-		emit('update:modelValue', val)
-		colorMode.preference = val
-	},
-})
+function update(val: 'light' | 'dark' | 'system') {
+	colorMode.preference = val
+}
 
 const items = computed(() => [
 	{
@@ -41,11 +29,12 @@ const items = computed(() => [
 
 <template>
 	<UTabs
-		v-model="tabValue"
+		v-model="model"
 		:content="false"
 		:items="items"
 		color="neutral"
 		size="sm"
 		class="w-auto"
+		@update:model-value="update"
 	/>
 </template>

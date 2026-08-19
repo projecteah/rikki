@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 		envPrefix: ['VITE_', 'TAURI_'],
 		server: {
 			strictPort: true,
-			hmr: {
+			ws: {
 				protocol: 'ws',
 				host: '0.0.0.0',
 				port: 1421,
@@ -39,4 +39,7 @@ export default defineNuxtConfig({
 		port: 1420,
 	},
 	compatibilityDate: '2026-07-30',
+	// future: {
+	// 	compatibilityVersion: 5,
+	// },
 })

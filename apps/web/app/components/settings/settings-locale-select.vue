@@ -3,18 +3,7 @@ import type { AvailableLocales } from '~~/i18n/locales'
 import { availableLocales } from '~~/i18n/locales'
 const { locale: currentLocale, locales } = useI18n()
 
-const props = defineProps<{
-	modelValue: AvailableLocales
-}>()
-
-const emit = defineEmits<{
-	'update:modelValue': [value: AvailableLocales]
-}>()
-
-const model = computed({
-	get: () => props.modelValue,
-	set: (val: AvailableLocales) => emit('update:modelValue', val),
-})
+const model = defineModel<AvailableLocales>()
 
 const processedLocales = computed(() => {
 	return availableLocales.map((locale) => {
