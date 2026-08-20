@@ -16,7 +16,7 @@ const ui = {
 	<UApp>
 		<UTheme :ui="ui">
 			<LayoutHeader v-if="isTauri" />
-			<main :class="isTauri && 'h-[calc(100vh-var(--ui-header-height))]'">
+			<main :class="isTauri ? 'h-[calc(100vh-var(--ui-header-height))]' : 'h-svh'">
 				<NuxtPage />
 			</main>
 		</UTheme>

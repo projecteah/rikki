@@ -8,13 +8,12 @@
 	},
 	"settings": {
 		"label": "設定",
-		"general": {
-			"label": "一般",
-			"language": "語言",
-			"searchLanguagesPlaceholder": "搜尋語言…"
-		},
 		"appearance": {
 			"label": "外觀",
+			"languageAndTime": "語言與時間",
+			"language": "語言",
+			"languageSearchPlaceholder": "搜尋語言…",
+			"color": "色調",
 			"colorMode": {
 				"label": "主題色",
 				"light": "淺色",

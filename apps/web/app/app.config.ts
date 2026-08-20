@@ -4,7 +4,6 @@ export default defineAppConfig({
 	},
 	routes: {
 		settings: {
-			general: '/settings/general',
 			appearance: '/settings/appearance',
 		},
 	},

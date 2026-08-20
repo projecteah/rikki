@@ -8,13 +8,12 @@
 	},
 	"settings": {
 		"label": "Settings",
-		"general": {
-			"label": "General",
-			"language": "Language",
-			"searchLanguagesPlaceholder": "Search languages..."
-		},
 		"appearance": {
 			"label": "Appearance",
+			"languageAndTime": "Language & Time",
+			"language": "Language",
+			"languageSearchPlaceholder": "Search languages...",
+			"color": "Color",
 			"colorMode": {
 				"label": "Color Mode",
 				"light": "Light",

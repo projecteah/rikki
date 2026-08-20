@@ -29,7 +29,7 @@ const processedLocales = computed(() => {
 		label-key="name"
 		value-key="code"
 		description-key="displayName"
-		:search-input="{ placeholder: $t('settings.general.searchLanguagesPlaceholder') }"
+		:search-input="{ placeholder: $t('settings.appearance.languageSearchPlaceholder') }"
 		:ui="{ itemLabel: 'text-sm', itemDescription: 'text-xs' }"
 	>
 		<!-- <template #item-label="{ item }">

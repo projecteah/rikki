@@ -6,10 +6,20 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-	<SettingsItem
-		:label="$t('settings.appearance.colorMode.label')"
-		:icon="appConfig.ui.icons.colorMode"
-	>
-		<SettingsColorModeTabs v-model="state.colorMode" />
-	</SettingsItem>
+	<SettingsItemGroup :headline="$t('settings.appearance.languageAndTime')">
+		<SettingsItem :label="$t('settings.appearance.language')" :icon="appConfig.ui.icons.globe">
+			<SettingsLocaleSelect v-model="state.locale" />
+		</SettingsItem>
+		<SettingsItem :label="$t('settings.appearance.language')" :icon="appConfig.ui.icons.globe">
+			<SettingsLocaleSelect v-model="state.locale" />
+		</SettingsItem>
+	</SettingsItemGroup>
+	<SettingsItemGroup :headline="$t('settings.appearance.color')">
+		<SettingsItem
+			:label="$t('settings.appearance.colorMode.label')"
+			:icon="appConfig.ui.icons.colorMode"
+		>
+			<SettingsColorModeTabs v-model="state.colorMode" />
+		</SettingsItem>
+	</SettingsItemGroup>
 </template>
