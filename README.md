@@ -1,4 +1,4 @@
-# Rikki
+# Riki
 
 A simple notes app. Quick capture of thoughts.
 

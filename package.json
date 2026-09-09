@@ -1,12 +1,12 @@
 {
-	"name": "rikki",
+	"name": "riki",
 	"version": "0.3.0",
 	"private": true,
 	"scripts": {
-		"dev": "pnpm --filter @rikki/web dev",
-		"dev:api": "pnpm --filter @rikki/api dev",
-		"dev:docs": "pnpm --filter @rikki/docs dev",
-		"build": "pnpm --filter @rikki/web build",
+		"dev": "pnpm --filter @riki/web dev",
+		"dev:api": "pnpm --filter @riki/api dev",
+		"dev:docs": "pnpm --filter @riki/docs dev",
+		"build": "pnpm --filter @riki/web build",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
 		"fmt": "oxfmt",

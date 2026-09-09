@@ -1,6 +1,6 @@
 export default defineAppConfig({
 	app: {
-		name: 'Rikki',
+		name: 'Riki',
 	},
 	routes: {
 		settings: {

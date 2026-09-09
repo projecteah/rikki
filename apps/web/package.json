@@ -1,5 +1,5 @@
 {
-	"name": "@rikki/web",
+	"name": "@riki/web",
 	"version": "0.3.0",
 	"scripts": {
 		"dev": "nuxt dev",

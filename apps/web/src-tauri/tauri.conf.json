@@ -1,7 +1,7 @@
 {
-	"productName": "Rikki",
+	"productName": "Riki",
 	"version": "0.3.0",
-	"identifier": "li.rikki.app",
+	"identifier": "li.riki.app",
 	"build": {
 		"beforeDevCommand": "pnpm dev",
 		"devUrl": "http://localhost:3000",
@@ -11,7 +11,7 @@
 	"app": {
 		"windows": [
 			{
-				"title": "Rikki",
+				"title": "Riki",
 				"width": 900,
 				"height": 600
 			}

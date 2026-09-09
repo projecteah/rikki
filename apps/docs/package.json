@@ -1,5 +1,5 @@
 {
-	"name": "@rikki/docs",
+	"name": "@riki/docs",
 	"version": "0.3.0",
 	"scripts": {
 		"dev": "vitepress dev docs",
