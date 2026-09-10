@@ -1,6 +1,6 @@
 <template>
 	<LayoutSidebar>
 		<!-- <NoteSearchInput /> -->
-		<NoteCalendar />
+		<!-- <NoteCalendar /> -->
 	</LayoutSidebar>
 </template>
