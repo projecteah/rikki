@@ -6,14 +6,22 @@
 		"build": "nuxt build",
 		"preview": "nuxt preview",
 		"tauri": "tauri",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"db:push": "drizzle-kit push",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio"
 	},
 	"dependencies": {
+		"@better-auth/drizzle-adapter": "^1.7.4",
+		"@libsql/client": "^0.18.0",
 		"@nuxt/ui": "^4.10.0",
 		"@pinia/nuxt": "^1.0.1",
 		"@tauri-apps/api": "^2.11.1",
 		"@tauri-apps/plugin-opener": "^2.5.4",
 		"@tauri-store/pinia": "^5.0.2",
+		"better-auth": "^1.7.4",
+		"drizzle-orm": "1.0.0-rc.4",
 		"marked": "18.0.7",
 		"pinia": "^4.0.2",
 		"pinia-plugin-persistedstate": "^4.7.1",
@@ -26,6 +34,7 @@
 		"@tauri-apps/cli": "^2.11.4",
 		"@vueuse/core": "^14.4.0",
 		"@vueuse/nuxt": "^14.4.0",
+		"drizzle-kit": "1.0.0-rc.4",
 		"nuxt": "^4.5.1"
 	}
 }

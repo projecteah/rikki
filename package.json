@@ -4,8 +4,6 @@
 	"private": true,
 	"scripts": {
 		"dev": "pnpm --filter @riki/web dev",
-		"dev:api": "pnpm --filter @riki/api dev",
-		"dev:docs": "pnpm --filter @riki/docs dev",
 		"build": "pnpm --filter @riki/web build",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
